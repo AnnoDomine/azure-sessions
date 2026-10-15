@@ -1,13 +1,11 @@
-# Single Command Collection (aus cloud3.sh)
+# Single Command Collection
 
 Diese Sammlung enthält alle Einzelbefehle sauber aufgeteilt in jeweils eigenständige Sessions und Dateien.
 Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbruch-Zeichen `\`) wurden korrigiert, indem die Parametererklärungen als strukturierte Kommentare über den Befehl gesetzt wurden.
 
 ---
 
-## Übersicht der Dateien
-
-:
+## Übersicht der Sessions
 
 | Datei | Beschreibung |
 |---|---|
