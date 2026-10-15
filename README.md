@@ -2,16 +2,16 @@
 
 Eine minimalistische Wissens- und Befehlsdatenbank für die **Azure Sessions** auf Cybersteps unter Nutzung der **Azure CLI (`az`)** auf einer Linux-Distribution.
 
-Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärungen zu den Parametern sowie das zusammenhängende Gesamtskript.
+Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärungen zu den Parametern.
 
 ---
 
 ## Sessions
 
-| Session | Thema | Gesamtskript | Einzelbefehle |
-|---|---|---|---|
-| **Cloud 3** | Virtual Networking (VNets, Subnetze, VMs, Bastion, Run-Command) | [`cloud3.sh`](./cloud3.sh) | [`single_cmd_collection/cloud3/`](./single_cmd_collection/cloud3/) |
-| **Cloud 5** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`cloud5.sh`](./cloud5.sh) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
+| Session | Thema | Einzelbefehle |
+|---|---|---|
+| **Cloud 3** | Virtual Networking (VNets, Subnetze, VMs, Bastion, Run-Command) | [`single_cmd_collection/cloud3/`](./single_cmd_collection/cloud3/) |
+| **Cloud 5** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
 
 ---
 
@@ -21,16 +21,9 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 .
 ├── AGENTS.md                  # Verhaltensregeln für AI-Agents (Ausführungsverbot)
 ├── README.md                  # Zentrale Übersicht (dieses Dokument)
-├── cloud3.sh                  # Gesamtskript für Session 3: Virtual Networking
-├── cloud5.sh                  # Gesamtskript für Session 5: Storage & Databases
 └── single_cmd_collection/     # Modulare Befehlssammlung nach Sessions unterteilt
     ├── README.md              # Übersicht über alle Sessions in der Sammlung
     ├── cloud3/                # Einzelbefehle für Cloud 3
-    │   ├── 00_env_variables.sh
-    │   ├── 01_export_rg.sh
-    │   ├── ...
-    │   ├── 17_az_network_bastion_ssh.sh
-    │   └── README.md
     └── cloud5/                # Einzelbefehle für Cloud 5
 ```
 
@@ -59,6 +52,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
   ```bash
   source single_cmd_collection/cloud3/00_env_variables.sh
   ```
+  
 - **Prerequisites**:
   - Azure CLI (`az`) installiert und via `az login` authentifiziert
   - Aktuelle SSH-Keys im Standardpfad (`~/.ssh/id_rsa` bzw. `~/.ssh/id_ed25519`)
