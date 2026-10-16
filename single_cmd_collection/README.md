@@ -11,3 +11,4 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 |---|---|
 | [`Cloud 3`](./cloud3/README.md) | CLOUD 3 - Virtual Networking |
 | [`Cloud 5`](./cloud5/README.md) | CLOUD 5 - Storage & Databases |
+| [`Cloud 6`](./cloud6/README.md) | CLOUD 6 - Load Balancing & Web Application Firewall (WAF) |

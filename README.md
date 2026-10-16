@@ -12,6 +12,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 |---|---|---|
 | **Cloud 3** | Virtual Networking (VNets, Subnetze, VMs, Bastion, Run-Command) | [`single_cmd_collection/cloud3/`](./single_cmd_collection/cloud3/) |
 | **Cloud 5** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
+| **Cloud 6** | Load Balancing & WAF (Standard LB, App Gateway, OWASP WAF, Network Watcher) | [`single_cmd_collection/cloud6/`](./single_cmd_collection/cloud6/) |
 
 ---
 
@@ -24,7 +25,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 └── single_cmd_collection/     # Modulare Befehlssammlung nach Sessions unterteilt
     ├── README.md              # Übersicht über alle Sessions in der Sammlung
     ├── cloud3/                # Einzelbefehle für Cloud 3
-    └── cloud5/                # Einzelbefehle für Cloud 5
+    ├── cloud5/                # Einzelbefehle für Cloud 5
+    └── cloud6/                # Einzelbefehle für Cloud 6
 ```
 
 ---
@@ -43,6 +45,13 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Blob Operations**: Upload, Download, Listung und Löschen von Blobs
 - **Lifecycle & Access Tiers**: Dynamischer Wechsel zwischen `Hot`- und `Cool`-Tiers
 - **Sicherheits- & Zugriffssteuerung**: Generierung zeitlich beschränkter SAS-Tokens (`az storage blob generate-sas`), sowie Verwaltung des anonymen Public-Blob-Zugriffs auf Account- und Container-Ebene
+
+### Cloud 6 – Load Balancing & Web Application Firewall (WAF)
+- **Layer-4 Load Balancing**: Bereitstellung eines `Standard` Azure Load Balancers inkl. Frontend-IP, Backend-Pool, TCP Health Probe und HTTP-Verteilungsregel (`az network lb`)
+- **Automatisiertes Backend-Provisioning**: Schleifenbasierte Erstellung redundanter Web-VMs (`web1`, `web2`), Nginx-Rollout via `run-command`, NIC-Pool-Registrierung und NSG-Freigaben
+- **High Availability & Failover**: Simulation eines Knotenausfalls (`az vm stop` / `az vm start`)
+- **Layer-7 Application Gateway & WAF**: Bereitstellung eines Application Gateways (`WAF_v2`) mit vorgeschalteter `OWASP 3.2` WAF-Policy im `Prevention`-Modus
+- **Netzwerkdiagnose**: Überprüfung effektiver NSG-Sicherheitsregeln mittels Azure Network Watcher (`az network watcher test-ip-flow`)
 
 ---
 
