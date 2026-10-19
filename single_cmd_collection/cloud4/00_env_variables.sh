@@ -2,6 +2,8 @@
 # ==============================================================================
 # 1. UMGEBUNGSVARIABLEN (ENVIRONMENT VARIABLES)
 # ==============================================================================
-# Definiert die Azure-Region (Rechenzentrumsstandort) für Cloud 6
+# Alle Basis-Umgebungsvariablen für Storage & RG aus cloud5.sh gesammelt:
 
+export RG="cloud4-lab-rg"
 export REGION="germanywestcentral"
+export ACCT="cloud5lab$RANDOM"

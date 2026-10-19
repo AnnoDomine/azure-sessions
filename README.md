@@ -11,8 +11,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | Session | Thema | Einzelbefehle |
 |---|---|---|
 | **Cloud 3** | Virtual Networking (VNets, Subnetze, VMs, Bastion, Run-Command) | [`single_cmd_collection/cloud3/`](./single_cmd_collection/cloud3/) |
-| **Cloud 5** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
-| **Cloud 6** | Load Balancing & WAF (Standard LB, App Gateway, OWASP WAF, Network Watcher) | [`single_cmd_collection/cloud6/`](./single_cmd_collection/cloud6/) |
+| **Cloud 4** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`single_cmd_collection/cloud4/`](./single_cmd_collection/cloud4/) |
+| **Cloud 5** | Load Balancing & WAF (Standard LB, App Gateway, OWASP WAF, Network Watcher) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
 
 ---
 
@@ -40,13 +40,13 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Remote Execution**: Software-Installation (Nginx) via Azure VM Agent (`az vm run-command invoke`)
 - **Zero-Trust Access**: Konfiguration von Azure Bastion inkl. `AzureBastionSubnet` und nativer SSH-Tunneling-Verbindung (`az network bastion ssh`)
 
-### Cloud 5 – Storage & Databases
+### Cloud 4 – Storage & Databases
 - **Storage Account & Container**: Bereitstellung von Blob Storage und privaten Containern
 - **Blob Operations**: Upload, Download, Listung und Löschen von Blobs
 - **Lifecycle & Access Tiers**: Dynamischer Wechsel zwischen `Hot`- und `Cool`-Tiers
 - **Sicherheits- & Zugriffssteuerung**: Generierung zeitlich beschränkter SAS-Tokens (`az storage blob generate-sas`), sowie Verwaltung des anonymen Public-Blob-Zugriffs auf Account- und Container-Ebene
 
-### Cloud 6 – Load Balancing & Web Application Firewall (WAF)
+### Cloud 5 – Load Balancing & Web Application Firewall (WAF)
 - **Layer-4 Load Balancing**: Bereitstellung eines `Standard` Azure Load Balancers inkl. Frontend-IP, Backend-Pool, TCP Health Probe und HTTP-Verteilungsregel (`az network lb`)
 - **Automatisiertes Backend-Provisioning**: Schleifenbasierte Erstellung redundanter Web-VMs (`web1`, `web2`), Nginx-Rollout via `run-command`, NIC-Pool-Registrierung und NSG-Freigaben
 - **High Availability & Failover**: Simulation eines Knotenausfalls (`az vm stop` / `az vm start`)

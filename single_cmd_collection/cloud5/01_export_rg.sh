@@ -2,6 +2,6 @@
 # ==============================================================================
 # 1. UMGEBUNGSVARIABLEN (ENVIRONMENT VARIABLES)
 # ==============================================================================
-# Definiert den Namen der Resource Group für Cloud 5
+# Definiert den Namen der Resource Group für Cloud 6
 
 export RG="cloud5-lab-rg"

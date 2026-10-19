@@ -2,6 +2,6 @@
 # ==============================================================================
 # 1. UMGEBUNGSVARIABLEN (ENVIRONMENT VARIABLES)
 # ==============================================================================
-# Definiert die Zielregion (Deutschland West-Zentral / Frankfurt)
+# Definiert die Azure-Region (Rechenzentrumsstandort) für Cloud 6
 
 export REGION="germanywestcentral"

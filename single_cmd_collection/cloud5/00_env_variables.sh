@@ -2,8 +2,14 @@
 # ==============================================================================
 # 1. UMGEBUNGSVARIABLEN (ENVIRONMENT VARIABLES)
 # ==============================================================================
-# Alle Basis-Umgebungsvariablen für Storage & RG aus cloud5.sh gesammelt:
+# Alle Basis-Umgebungsvariablen für Cloud 6 (Load Balancer, Application Gateway, WAF) gesammelt:
 
 export RG="cloud5-lab-rg"
 export REGION="germanywestcentral"
-export ACCT="cloud5lab$RANDOM"
+export VNET="cloud6-vnet"
+export LOAD_BALANCER_IP_NAME="lb-ip"
+export LB="myLB"
+export GW="myAppGW"
+export GW_SUB="appgw-subnet"
+export GW_IP="appgw-ip"
+export WAF_POL="myWAFPolicy"
