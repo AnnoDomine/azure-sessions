@@ -13,6 +13,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 3** | Virtual Networking (VNets, Subnetze, VMs, Bastion, Run-Command) | [`single_cmd_collection/cloud3/`](./single_cmd_collection/cloud3/) |
 | **Cloud 4** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`single_cmd_collection/cloud4/`](./single_cmd_collection/cloud4/) |
 | **Cloud 5** | Load Balancing & WAF (Standard LB, App Gateway, OWASP WAF, Network Watcher) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
+| **Cloud 6** | Identity & Access Management (Entra ID, RBAC Role Assignments, Managed Identity) | [`single_cmd_collection/cloud6/`](./single_cmd_collection/cloud6/) |
 
 ---
 
@@ -25,6 +26,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 └── single_cmd_collection/     # Modulare Befehlssammlung nach Sessions unterteilt
     ├── README.md              # Übersicht über alle Sessions in der Sammlung
     ├── cloud3/                # Einzelbefehle für Cloud 3
+    ├── cloud4/                # Einzelbefehle für Cloud 4
     ├── cloud5/                # Einzelbefehle für Cloud 5
     └── cloud6/                # Einzelbefehle für Cloud 6
 ```
@@ -52,6 +54,12 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **High Availability & Failover**: Simulation eines Knotenausfalls (`az vm stop` / `az vm start`)
 - **Layer-7 Application Gateway & WAF**: Bereitstellung eines Application Gateways (`WAF_v2`) mit vorgeschalteter `OWASP 3.2` WAF-Policy im `Prevention`-Modus
 - **Netzwerkdiagnose**: Überprüfung effektiver NSG-Sicherheitsregeln mittels Azure Network Watcher (`az network watcher test-ip-flow`)
+
+### Cloud 6 – Identity & Access Management (IAM & RBAC)
+- **Entra ID & Principal Discovery**: Auslesen des aktuell angemeldeten Benutzers (`az ad signed-in-user show`) und der Subscription-ID
+- **RBAC Role Inspection**: Abfragen von Built-in Rollendefinitionen (`az role definition list --name Reader`) und bestehenden Role Assignments (`az role assignment list`)
+- **Managed Identity**: Bereitstellung einer Ubuntu-VM mit System-Assigned Managed Identity (`--assign-identity`) und Extraktion der `principalId`
+- **Granulares RBAC Scoping**: Zuweisung von `Reader`-Rechten auf Resource-Group-Ebene (`az role assignment create --role "Reader"`) sowie `Contributor`-Rechten gezielt auf VM-Ressourcenebene (`--role "Contributor"`)
 
 ---
 
