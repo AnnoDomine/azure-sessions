@@ -8,7 +8,7 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 ## Übersicht der Sessions
 
 | Datei | Beschreibung |
-|---|---|
+| --- | --- |
 | [`Cloud 3`](./cloud3/README.md) | CLOUD 3 - Virtual Networking |
 | [`Cloud 4`](./cloud4/README.md) | CLOUD 4 - Storage & Databases |
 | [`Cloud 5`](./cloud5/README.md) | CLOUD 5 - Load Balancing & Web Application Firewall (WAF) |

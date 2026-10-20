@@ -7,7 +7,7 @@ Themenschwerpunkte sind Layer-4-Lastverteilung mit **Azure Standard Load Balance
 ## Übersicht der Dateien
 
 | Datei | Beschreibung |
-|---|---|
+| --- | --- |
 | [`00_env_variables.sh`](./00_env_variables.sh) | Alle Basis-Umgebungsvariablen (`RG`, `REGION`, `VNET`, `LB`, `GW`, `WAF_POL` etc.) gemeinsam |
 | [`01_export_rg.sh`](./01_export_rg.sh) | `export RG="cloud5-lab-rg"` |
 | [`02_export_region.sh`](./02_export_region.sh) | `export REGION="germanywestcentral"` |

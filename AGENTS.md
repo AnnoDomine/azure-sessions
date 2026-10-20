@@ -1,6 +1,7 @@
 # AGENTS.md
 
 ## Repository Overview
+
 Dieses Repository dient als minimalistische Datenbank und Referenzsammlung für **Azure Sessions auf Cybersteps** unter Verwendung der **Azure CLI (`az`) auf Linux**.
 Für jede Session werden die Befehle separat, strukturiert und inklusive verständlicher Erklärungen vorgehalten.
 

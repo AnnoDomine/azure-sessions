@@ -7,7 +7,7 @@ Themenschwerpunkte sind die Abfrage von **Microsoft Entra ID** Benutzer- und Sub
 ## Übersicht der Dateien
 
 | Datei | Beschreibung |
-|---|---|
+| --- | --- |
 | [`00_env_variables.sh`](./00_env_variables.sh) | Alle Basis-Umgebungsvariablen (`RG`, `REGION`, `VM`) gemeinsam |
 | [`01_export_rg.sh`](./01_export_rg.sh) | `export RG="cloud6-rbac-rg"` |
 | [`02_export_region.sh`](./02_export_region.sh) | `export REGION="germanywestcentral"` |
