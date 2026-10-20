@@ -14,6 +14,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 4** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`single_cmd_collection/cloud4/`](./single_cmd_collection/cloud4/) |
 | **Cloud 5** | Load Balancing & WAF (Standard LB, App Gateway, OWASP WAF, Network Watcher) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
 | **Cloud 6** | Identity & Access Management (Entra ID, RBAC Role Assignments, Managed Identity) | [`single_cmd_collection/cloud6/`](./single_cmd_collection/cloud6/) |
+| **Cloud 7** | Governance & Monitoring (Resource Locks, Azure Policy, Monitor, Tags, Advisor) | [`single_cmd_collection/cloud7/`](./single_cmd_collection/cloud7/) |
 
 ---
 
@@ -28,7 +29,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud3/                # Einzelbefehle für Cloud 3
     ├── cloud4/                # Einzelbefehle für Cloud 4
     ├── cloud5/                # Einzelbefehle für Cloud 5
-    └── cloud6/                # Einzelbefehle für Cloud 6
+    ├── cloud6/                # Einzelbefehle für Cloud 6
+    └── cloud7/                # Einzelbefehle für Cloud 7
 ```
 
 ---
@@ -64,6 +66,14 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **RBAC Role Inspection**: Abfragen von Built-in Rollendefinitionen (`az role definition list --name Reader`) und bestehenden Role Assignments (`az role assignment list`)
 - **Managed Identity**: Bereitstellung einer Ubuntu-VM mit System-Assigned Managed Identity (`--assign-identity`) und Extraktion der `principalId`
 - **Granulares RBAC Scoping**: Zuweisung von `Reader`-Rechten auf Resource-Group-Ebene (`az role assignment create --role "Reader"`) sowie `Contributor`-Rechten gezielt auf VM-Ressourcenebene (`--role "Contributor"`)
+
+### Cloud 7 – Governance & Monitoring
+
+- **Resource Locks**: Schutz kritischer Ressourcen vor versehentlichem Löschen mittels `CanNotDelete`-Lock (`az lock create` / `az lock delete`)
+- **Azure Policy & Compliance**: Einschränkung zulässiger Bereitstellungsregionen (`Allowed locations` auf `germanywestcentral`) via Policy Assignment (`az policy assignment create`) inkl. Deny-Verifikation
+- **Azure Monitor & Alerting**: Abfrage von VM-Plattformmetriken (`az monitor metrics list`), Einrichtung einer E-Mail-Benachrichtigungsgruppe (`az monitor action-group create`) und einer schwellenwertbasierten CPU-Warnregel (`az monitor metrics alert create`)
+- **Tagging & Cost Governance**: Vergabe von Metadaten-Tags (`CostCenter=000`) auf Resource-Group-Ebene (`az tag create`)
+- **Auditing, Health & Advisor**: Auswertung von Control-Plane-Operationen im Activity Log (`az monitor activity-log list`), Abfrage des `Microsoft.ResourceHealth`-Status via `az rest` sowie Abruf von Optimierungsempfehlungen über Azure Advisor (`az advisor recommendation list`)
 
 ---
 

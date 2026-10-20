@@ -13,3 +13,4 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 | [`Cloud 4`](./cloud4/README.md) | CLOUD 4 - Storage & Databases |
 | [`Cloud 5`](./cloud5/README.md) | CLOUD 5 - Load Balancing & Web Application Firewall (WAF) |
 | [`Cloud 6`](./cloud6/README.md) | CLOUD 6 - Identity & Access Management (IAM, RBAC & Managed Identity) |
+| [`Cloud 7`](./cloud7/README.md) | CLOUD 7 - Governance & Monitoring (Locks, Policy, Azure Monitor, Tags & Advisor) |
