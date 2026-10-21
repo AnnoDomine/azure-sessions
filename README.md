@@ -15,6 +15,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 5** | Load Balancing & WAF (Standard LB, App Gateway, OWASP WAF, Network Watcher) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
 | **Cloud 6** | Identity & Access Management (Entra ID, RBAC Role Assignments, Managed Identity) | [`single_cmd_collection/cloud6/`](./single_cmd_collection/cloud6/) |
 | **Cloud 7** | Governance & Monitoring (Resource Locks, Azure Policy, Monitor, Tags, Advisor) | [`single_cmd_collection/cloud7/`](./single_cmd_collection/cloud7/) |
+| **Cloud 8** | FinOps & Cost Management (Advisor Cost, VM Deallocate/Auto-Shutdown, Unattached Disks, Budgets, Tag-Policy) | [`single_cmd_collection/cloud8/`](./single_cmd_collection/cloud8/) |
 
 ---
 
@@ -30,7 +31,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud4/                # Einzelbefehle für Cloud 4
     ├── cloud5/                # Einzelbefehle für Cloud 5
     ├── cloud6/                # Einzelbefehle für Cloud 6
-    └── cloud7/                # Einzelbefehle für Cloud 7
+    ├── cloud7/                # Einzelbefehle für Cloud 7
+    └── cloud8/                # Einzelbefehle für Cloud 8
 ```
 
 ---
@@ -74,6 +76,14 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Azure Monitor & Alerting**: Abfrage von VM-Plattformmetriken (`az monitor metrics list`), Einrichtung einer E-Mail-Benachrichtigungsgruppe (`az monitor action-group create`) und einer schwellenwertbasierten CPU-Warnregel (`az monitor metrics alert create`)
 - **Tagging & Cost Governance**: Vergabe von Metadaten-Tags (`CostCenter=000`) auf Resource-Group-Ebene (`az tag create`)
 - **Auditing, Health & Advisor**: Auswertung von Control-Plane-Operationen im Activity Log (`az monitor activity-log list`), Abfrage des `Microsoft.ResourceHealth`-Status via `az rest` sowie Abruf von Optimierungsempfehlungen über Azure Advisor (`az advisor recommendation list`)
+
+### Cloud 8 – FinOps & Cost Management
+
+- **Kostenempfehlungen (Azure Advisor)**: Aktualisierung und gezielte Abfrage von Einsparpotenzialen der Kategorie `Cost` (`az advisor recommendation list --category Cost --refresh`)
+- **Compute-Kostensteuerung & VM-Lifecycle**: Identifikation laufender VMs (`powerState=='VM running'`), Freigabe von Compute-Kapazitäten durch Deallokation (`az vm deallocate`) sowie Einrichtung eines automatischen täglichen Shutdowns (`az vm auto-shutdown --time 2100`)
+- **Storage-Kostenoptimierung**: Aufspüren verwaister, nicht zugeordneter Managed Disks (`az disk list --query "[?managedBy==null]..."`)
+- **Budgetierung**: Erstellung und Überprüfung eines monatlichen Kostenbudgets auf Resource-Group-Ebene (`az consumption budget create-with-rg` / `az consumption budget show`)
+- **Cost Allocation & Tag-Governance**: Vergabe von Projekt- und Team-Tags (`az tag create --tags project=Banane team=Klasse0426`) sowie Durchsetzung eines Pflicht-Tags (`owner`) bei neuen Ressourcen mittels Azure Policy (`Require a tag on resources`) inkl. konformer Test-VM-Bereitstellung
 
 ---
 
