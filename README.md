@@ -16,6 +16,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 6** | Identity & Access Management (Entra ID, RBAC Role Assignments, Managed Identity) | [`single_cmd_collection/cloud6/`](./single_cmd_collection/cloud6/) |
 | **Cloud 7** | Governance & Monitoring (Resource Locks, Azure Policy, Monitor, Tags, Advisor) | [`single_cmd_collection/cloud7/`](./single_cmd_collection/cloud7/) |
 | **Cloud 8** | FinOps & Cost Management (Advisor Cost, VM Deallocate/Auto-Shutdown, Unattached Disks, Budgets, Tag-Policy) | [`single_cmd_collection/cloud8/`](./single_cmd_collection/cloud8/) |
+| **Cloud 9** | Defender for Cloud & Security Auditing (Prowler) | [`single_cmd_collection/cloud9/`](./single_cmd_collection/cloud9/) |
 
 ---
 
@@ -32,7 +33,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud5/                # Einzelbefehle für Cloud 5
     ├── cloud6/                # Einzelbefehle für Cloud 6
     ├── cloud7/                # Einzelbefehle für Cloud 7
-    └── cloud8/                # Einzelbefehle für Cloud 8
+    ├── cloud8/                # Einzelbefehle für Cloud 8
+    └── cloud9/                # Einzelbefehle für Cloud 9
 ```
 
 ---
@@ -84,6 +86,14 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Storage-Kostenoptimierung**: Aufspüren verwaister, nicht zugeordneter Managed Disks (`az disk list --query "[?managedBy==null]..."`)
 - **Budgetierung**: Erstellung und Überprüfung eines monatlichen Kostenbudgets auf Resource-Group-Ebene (`az consumption budget create-with-rg` / `az consumption budget show`)
 - **Cost Allocation & Tag-Governance**: Vergabe von Projekt- und Team-Tags (`az tag create --tags project=Banane team=Klasse0426`) sowie Durchsetzung eines Pflicht-Tags (`owner`) bei neuen Ressourcen mittels Azure Policy (`Require a tag on resources`) inkl. konformer Test-VM-Bereitstellung
+
+### Cloud 9 – Security Assessment & Compliance (Prowler)
+
+- **Auditing-Umgebung**: Isolierte Python-Umgebung (`python3 -m venv prowler-env`), Pip-Upgrade und Bereitstellung des Open-Source Security Tools Prowler (`pip install prowler`)
+- **CLI-Authentifizierung & Scope**: Nahtlose Wiederverwendung aktiver Azure-CLI-Anmeldedaten (`az login`) und gezielte Subscription-Festlegung (`az account set --subscription`)
+- **Automatisierte Security Audits**: Durchführung von Multi-Service-Sicherheitsprüfungen (`prowler azure --az-cli-auth`) zur Bewertung von Konfigurationsrisiken und Compliance (z. B. CIS Benchmark)
+- **Multi-Format Reporting**: Generierung detaillierter Berichtsartefakte im interaktiven HTML-Format, tabellarischen CSV-Format und standardisierten JSON-OCSF-Format (`-M html csv json-ocsf`)
+- **Lokale Report-Bereitstellung**: Lokaler Python-Webserver (`python3 -m http.server 8000`) zur bequemen Inspektion und Analyse des HTML-Sicherheits-Dashboards
 
 ---
 

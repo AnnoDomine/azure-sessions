@@ -1,2 +1,5 @@
 /cloud*.sh
 *.txt
+
+/prowler-env
+/output
