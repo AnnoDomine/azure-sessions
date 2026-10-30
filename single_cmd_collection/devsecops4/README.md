@@ -35,13 +35,17 @@ Themenschwerpunkte sind die sichere Verwaltung von Anwendungs- und Infrastruktur
 ## Workflow & Erläuterungen
 
 ### 1. Azure Key Vault mit RBAC-Autorisierung
+
 Herkömmliche Key Vaults nutzten Vault Access Policies, bei denen Berechtigungen grobgranulär und unabhängig von Azure RBAC verwaltet wurden. Mit `--enable-rbac-authorization true` wird die Autorisierung nahtlos an Microsoft Entra ID übergeben. Dadurch greifen einheitliche IAM-Prozesse, PIM (Privileged Identity Management) und Audit-Logs für Data-Plane-Operationen.
 
 ### 2. Secret-Lifecycle & Versionierung
+
 Sobald ein Secret (`az keyvault secret set`) unter demselben Namen erneut gespeichert wird, überschreibt Key Vault den alten Wert nicht destruktiv, sondern legt eine neue kryptografisch unveränderliche Version an. Über `az keyvault secret list-versions` können ältere Stände nachvollzogen und bei Bedarf referenziert werden. Das Setzen von `--expires` erzwingt Sicherheitsrichtlinien für regelmäßige Rotation.
 
 ### 3. Zero-Secret-Architektur mit Managed Identities
+
 Um Zugangsdaten (wie API-Keys oder Datenbankpasswörter) nicht im Quellcode oder in Konfigurationsdateien auf der VM speichern zu müssen, wird die System-Assigned Managed Identity der VM genutzt:
+
 - Die VM erhält eine eindeutige Identität (`principalId`) in Microsoft Entra ID.
 - Dieser Identität wird über Azure RBAC die Rolle **`Key Vault Secrets User`** zugewiesen (ausschließlich Lesezugriff auf Geheimnisse).
 - Über den lokalen Azure Instance Metadata Service (IMDS, `169.254.169.254`) fordert die VM kurzlebige OAuth-2.0-Tokens an (`az login --identity`), um autorisiert auf den Key Vault zuzugreifen.

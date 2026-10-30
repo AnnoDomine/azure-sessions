@@ -28,6 +28,7 @@ Themenschwerpunkte sind **Cloud Security Posture Management (CSPM)** und **Compl
 ## Workflow & Erläuterungen
 
 ### 1. Vorbereitung der Python-Umgebung
+
 Prowler wird als Python-Paket ausgeliefert. Um Konflikte mit systemweiten Python-Paketen zu vermeiden, wird eine dedizierte Virtual Environment namens `prowler-env` angelegt und aktiviert:
 
 ```bash
@@ -39,6 +40,7 @@ prowler -v
 ```
 
 ### 2. Azure-Authentifizierung & Subscription-Auswahl
+
 Prowler unterstützt die direkte Wiederverwendung existierender Azure-CLI-Sitzungen (`--az-cli-auth`). Damit entfällt die Notwendigkeit, separate Service Principals oder Secrets im Skript zu hinterlegen:
 
 ```bash
@@ -49,6 +51,7 @@ az account set --subscription "$SUBSCRIPTION_ID"
 ```
 
 ### 3. Sicherheitsaudit mit Prowler ausführen
+
 Der Scan analysiert die Konfigurationen sämtlicher Azure-Services (z. B. Entra ID, Storage Accounts, NSGs, Virtual Machines, Key Vaults, SQL Databases) anhand etablierter Industriestandards (wie CIS Azure Foundations Benchmark):
 
 ```bash
@@ -59,6 +62,7 @@ prowler azure \
 ```
 
 **Erklärungen der Parameter**:
+
 - `azure`: Provider-Ziel für Microsoft Azure.
 - `--az-cli-auth`: Verwendet das aktive Token aus `az login`.
 - `-M html csv json-ocsf`: Erzeugt drei komplementäre Berichtsformate:
@@ -68,6 +72,7 @@ prowler azure \
 - `--subscription-ids`: Beschränkt die Überprüfung gezielt auf die gewünschte Azure-Subscription.
 
 ### 4. Berichte sichten & Webserver starten
+
 Die erzeugten Berichte werden im Unterordner `output/` gespeichert. Zur bequemen Betrachtung des HTML-Dashboards kann direkt ein minimalistischer Python-Webserver gestartet werden:
 
 ```bash
