@@ -1,4 +1,5 @@
 /cloud*.sh
+/devsecops*.sh
 *.txt
 
 /prowler-env

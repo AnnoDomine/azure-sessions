@@ -17,6 +17,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 7** | Governance & Monitoring (Resource Locks, Azure Policy, Monitor, Tags, Advisor) | [`single_cmd_collection/cloud7/`](./single_cmd_collection/cloud7/) |
 | **Cloud 8** | FinOps & Cost Management (Advisor Cost, VM Deallocate/Auto-Shutdown, Unattached Disks, Budgets, Tag-Policy) | [`single_cmd_collection/cloud8/`](./single_cmd_collection/cloud8/) |
 | **Cloud 9** | Defender for Cloud & Security Auditing (Prowler) | [`single_cmd_collection/cloud9/`](./single_cmd_collection/cloud9/) |
+| **DevSecOps 4** | Secrets Management (Azure Key Vault, RBAC & Managed Identity) | [`single_cmd_collection/devsecops4/`](./single_cmd_collection/devsecops4/) |
 
 ---
 
@@ -34,7 +35,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud6/                # Einzelbefehle für Cloud 6
     ├── cloud7/                # Einzelbefehle für Cloud 7
     ├── cloud8/                # Einzelbefehle für Cloud 8
-    └── cloud9/                # Einzelbefehle für Cloud 9
+    ├── cloud9/                # Einzelbefehle für Cloud 9
+    └── devsecops4/            # Einzelbefehle für DevSecOps 4
 ```
 
 ---
@@ -94,6 +96,15 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Automatisierte Security Audits**: Durchführung von Multi-Service-Sicherheitsprüfungen (`prowler azure --az-cli-auth`) zur Bewertung von Konfigurationsrisiken und Compliance (z. B. CIS Benchmark)
 - **Multi-Format Reporting**: Generierung detaillierter Berichtsartefakte im interaktiven HTML-Format, tabellarischen CSV-Format und standardisierten JSON-OCSF-Format (`-M html csv json-ocsf`)
 - **Lokale Report-Bereitstellung**: Lokaler Python-Webserver (`python3 -m http.server 8000`) zur bequemen Inspektion und Analyse des HTML-Sicherheits-Dashboards
+
+### DevSecOps 4 – Secrets Management (Azure Key Vault, RBAC & Managed Identity)
+
+- **Key Vault & RBAC Authorization**: Bereitstellung eines Azure Key Vaults mit nativer Entra ID RBAC-Autorisierung (`--enable-rbac-authorization true`) anstelle traditioneller Access Policies
+- **Role Scoping & Privilegien**: Zuweisung administrativer Rechte (`Key Vault Secrets Officer`) auf Vault-Ebene an den Entra-Benutzer
+- **Secret Lifecycle & Rotation**: Sichere Speicherung von Secrets (`az keyvault secret set`) inkl. Expiration Date, Versionierung bei Werteaktualisierung und tabellarische Versionsauflistung (`az keyvault secret list-versions`)
+- **Zero-Secret Compute-Architektur**: Bereitstellung einer Ubuntu-VM mit System-Assigned Managed Identity (`az vm identity assign`)
+- **Least-Privilege Datenebene**: Zuweisung der minimal erforderlichen Leserolle (`Key Vault Secrets User`) an die Identität der VM
+- **IMDS & Remote Execution**: Remote-Installation der Azure CLI (`deb_install.sh`) via Azure VM Run-Command, tokenbasierte Authentifizierung (`az login --identity`) und schlüsselloser Secret-Abruf über den Azure Instance Metadata Service (IMDS)
 
 ---
 

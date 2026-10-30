@@ -16,3 +16,4 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 | [`Cloud 7`](./cloud7/README.md) | CLOUD 7 - Governance & Monitoring (Locks, Policy, Azure Monitor, Tags & Advisor) |
 | [`Cloud 8`](./cloud8/README.md) | CLOUD 8 - FinOps & Azure Cost Management (Advisor Cost, Deallocate, Auto-Shutdown, Budgets & Tag-Policy) |
 | [`Cloud 9`](./cloud9/README.md) | CLOUD 9 - Security Assessment & Compliance mit Prowler (Defender for Cloud) |
+| [`DevSecOps 4`](./devsecops4/README.md) | DevSecOps 4 - Secrets Management (Azure Key Vault, RBAC & Managed Identity) |
