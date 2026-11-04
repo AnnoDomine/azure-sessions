@@ -18,6 +18,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 8** | FinOps & Cost Management (Advisor Cost, VM Deallocate/Auto-Shutdown, Unattached Disks, Budgets, Tag-Policy) | [`single_cmd_collection/cloud8/`](./single_cmd_collection/cloud8/) |
 | **Cloud 9** | Defender for Cloud & Security Auditing (Prowler) | [`single_cmd_collection/cloud9/`](./single_cmd_collection/cloud9/) |
 | **DevSecOps 4** | Secrets Management (Azure Key Vault, RBAC & Managed Identity) | [`single_cmd_collection/devsecops4/`](./single_cmd_collection/devsecops4/) |
+| **DevSecOps 7** | Container Security & Delivery (Azure Container Registry & Docker) | [`single_cmd_collection/devsecops7/`](./single_cmd_collection/devsecops7/) |
 
 ---
 
@@ -36,7 +37,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud7/                # Einzelbefehle für Cloud 7
     ├── cloud8/                # Einzelbefehle für Cloud 8
     ├── cloud9/                # Einzelbefehle für Cloud 9
-    └── devsecops4/            # Einzelbefehle für DevSecOps 4
+    ├── devsecops4/            # Einzelbefehle für DevSecOps 4
+    └── devsecops7/            # Einzelbefehle für DevSecOps 7
 ```
 
 ---
@@ -105,6 +107,14 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Zero-Secret Compute-Architektur**: Bereitstellung einer Ubuntu-VM mit System-Assigned Managed Identity (`az vm identity assign`)
 - **Least-Privilege Datenebene**: Zuweisung der minimal erforderlichen Leserolle (`Key Vault Secrets User`) an die Identität der VM
 - **IMDS & Remote Execution**: Remote-Installation der Azure CLI (`deb_install.sh`) via Azure VM Run-Command, tokenbasierte Authentifizierung (`az login --identity`) und schlüsselloser Secret-Abruf über den Azure Instance Metadata Service (IMDS)
+
+### DevSecOps 7 – Container Security & Delivery (Azure Container Registry & Docker)
+
+- **Container Registry & Provider**: Registrierung des Resource Providers (`Microsoft.ContainerRegistry`) und Erstellung einer privaten Azure Container Registry (`az acr create --sku Basic`)
+- **CLI-gestützte Docker-Authentifizierung**: Nahtlose, tokenbasierte Anmeldung des Docker-Daemons via Entra ID (`az acr login`) ohne statische Secrets
+- **Image Build & Tagging**: Lokales Erstellen des Container-Images via Dockerfile und Vergabe des FQDN-Tags (`<acr>.azurecr.io/<image>:latest`)
+- **Registry Push & Repository-Inspektion**: Hochladen des Container-Images (`docker push`) und Verifizieren veröffentlichter Repositories (`az acr repository list -o table`)
+- **Distribution Roundtrip & Execution**: Bereinigung lokaler Image-Caches (`docker rmi`), pull-basierter Download aus der ACR (`docker pull`) und Ausführung als Hintergrundcontainer mit Portweiterleitung (`docker run -d -p 5050:5050`)
 
 ---
 
