@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "hashicorp.terraform",
+        "shakram02.bash-beautify",
+        "ms-azuretools.vscode-containers",
+        "ms-azuretools.vscode-docker",
+        "docker.docker",
+        "me-dutour-mathieu.vscode-github-actions",
+        "davidanson.vscode-markdownlint",
+        "mdickin.markdown-shortcuts",
+        "aaron-bond.better-comments",
+        "redhat.vscode-yaml",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "ms-vscode.azurecli",
+        "ms-azuretools.vscode-azurevirtualmachines",
+        "ms-kubernetes-tools.vscode-aks-tools"
+    ]
+}
