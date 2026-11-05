@@ -29,6 +29,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 .
 ├── AGENTS.md                  # Verhaltensregeln für AI-Agents (Ausführungsverbot)
 ├── README.md                  # Zentrale Übersicht (dieses Dokument)
+├── Dockerfile                 # Beispiel Dockerfile
 └── single_cmd_collection/     # Modulare Befehlssammlung nach Sessions unterteilt
     ├── README.md              # Übersicht über alle Sessions in der Sammlung
     ├── cloud3/                # Einzelbefehle für Cloud 3
