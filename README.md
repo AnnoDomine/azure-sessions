@@ -19,6 +19,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 9** | Defender for Cloud & Security Auditing (Prowler) | [`single_cmd_collection/cloud9/`](./single_cmd_collection/cloud9/) |
 | **DevSecOps 4** | Secrets Management (Azure Key Vault, RBAC & Managed Identity) | [`single_cmd_collection/devsecops4/`](./single_cmd_collection/devsecops4/) |
 | **DevSecOps 7** | Container Security & Delivery (Azure Container Registry & Docker) | [`single_cmd_collection/devsecops7/`](./single_cmd_collection/devsecops7/) |
+| **DevSecOps 8** | IaC & Terraform Intro (AzureRM Provider, State, Drift & Import) | [`single_cmd_collection/devsecops8/`](./single_cmd_collection/devsecops8/) |
 
 ---
 
@@ -38,7 +39,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud8/                # Einzelbefehle für Cloud 8
     ├── cloud9/                # Einzelbefehle für Cloud 9
     ├── devsecops4/            # Einzelbefehle für DevSecOps 4
-    └── devsecops7/            # Einzelbefehle für DevSecOps 7
+    ├── devsecops7/            # Einzelbefehle für DevSecOps 7
+    └── devsecops8/            # Einzelbefehle für DevSecOps 8
 ```
 
 ---
@@ -115,6 +117,16 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Image Build & Tagging**: Lokales Erstellen des Container-Images via Dockerfile und Vergabe des FQDN-Tags (`<acr>.azurecr.io/<image>:latest`)
 - **Registry Push & Repository-Inspektion**: Hochladen des Container-Images (`docker push`) und Verifizieren veröffentlichter Repositories (`az acr repository list -o table`)
 - **Distribution Roundtrip & Execution**: Bereinigung lokaler Image-Caches (`docker rmi`), pull-basierter Download aus der ACR (`docker pull`) und Ausführung als Hintergrundcontainer mit Portweiterleitung (`docker run -d -p 5050:5050`)
+
+### DevSecOps 8 – Infrastructure as Code (IaC & Terraform mit Azure)
+
+- **Terraform CLI & Provider**: Einrichtung des offiziellen HashiCorp APT-Repositories und Installation der Terraform CLI
+- **Headless Authentifizierung**: Konfiguration des `azurerm`-Providers über einen dedizierten Microsoft Entra ID Service Principal mit `Contributor`-Rolle und `ARM_*`-Umgebungsvariablen
+- **Kern-Workflow**: Initialisierung (`terraform init`), automatisierte Code-Formatierung (`terraform fmt`), statische Validierung (`terraform validate`), differenzielle Ausführungspläne (`terraform plan`) und kontrollierte Anwendung (`terraform apply`)
+- **State-Inspektion & Drift Reconciliation**: Analyse des Zustandsfiles (`terraform show`, `terraform state list`), Simulation manueller Ressourcenlöschung und vollautomatisierte Wiederherstellung des Sollzustands (Drift Detection)
+- **Deklarative Infrastruktur-Evolution**: Inkrementelle Erweiterung bestehender HCL-Konfigurationen um Metadaten-Tags und Virtual Networks (`azurerm_virtual_network`)
+- **Modernes Resource Importing (Terraform 1.5+)**: Deklarativer Import out-of-band erstellter Azure Virtual Machines über den `import`-Block inklusive automatisierter HCL-Codegenerierung (`-generate-config-out`)
+- **Lifecycle & Cleanup**: Rückstandsfreie Deprovisionierung aller verwalteten Cloud-Ressourcen via `terraform destroy`
 
 ---
 

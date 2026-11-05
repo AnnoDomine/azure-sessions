@@ -18,3 +18,4 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 | [`Cloud 9`](./cloud9/README.md) | CLOUD 9 - Security Assessment & Compliance mit Prowler (Defender for Cloud) |
 | [`DevSecOps 4`](./devsecops4/README.md) | DevSecOps 4 - Secrets Management (Azure Key Vault, RBAC & Managed Identity) |
 | [`DevSecOps 7`](./devsecops7/README.md) | DevSecOps 7 - Container Security & Delivery (Azure Container Registry & Docker) |
+| [`DevSecOps 8`](./devsecops8/README.md) | DevSecOps 8 - Infrastructure as Code (IaC & Terraform mit Azure) |

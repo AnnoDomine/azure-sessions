@@ -2,5 +2,6 @@
 /devsecops*.sh
 *.txt
 
-/prowler-env
-/output
+/prowler-env/
+/output/
+/learn-terraform-azure/
