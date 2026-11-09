@@ -19,3 +19,4 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 | [`DevSecOps 4`](./devsecops4/README.md) | DevSecOps 4 - Secrets Management (Azure Key Vault, RBAC & Managed Identity) |
 | [`DevSecOps 7`](./devsecops7/README.md) | DevSecOps 7 - Container Security & Delivery (Azure Container Registry & Docker) |
 | [`DevSecOps 8`](./devsecops8/README.md) | DevSecOps 8 - Infrastructure as Code (IaC & Terraform mit Azure) |
+| [`DevSecOps 10`](./devsecops10/README.md) | DevSecOps 10 - Kubernetes & Container Orchestration (Minikube & Workloads) |

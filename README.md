@@ -20,6 +20,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **DevSecOps 4** | Secrets Management (Azure Key Vault, RBAC & Managed Identity) | [`single_cmd_collection/devsecops4/`](./single_cmd_collection/devsecops4/) |
 | **DevSecOps 7** | Container Security & Delivery (Azure Container Registry & Docker) | [`single_cmd_collection/devsecops7/`](./single_cmd_collection/devsecops7/) |
 | **DevSecOps 8** | IaC & Terraform Intro (AzureRM Provider, State, Drift & Import) | [`single_cmd_collection/devsecops8/`](./single_cmd_collection/devsecops8/) |
+| **DevSecOps 10** | Kubernetes & Container Orchestration (Minikube, Deployments, Scaling & Services) | [`single_cmd_collection/devsecops10/`](./single_cmd_collection/devsecops10/) |
 
 ---
 
@@ -41,7 +42,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud9/                # Einzelbefehle für Cloud 9
     ├── devsecops4/            # Einzelbefehle für DevSecOps 4
     ├── devsecops7/            # Einzelbefehle für DevSecOps 7
-    └── devsecops8/            # Einzelbefehle für DevSecOps 8
+    ├── devsecops8/            # Einzelbefehle für DevSecOps 8
+    └── devsecops10/           # Einzelbefehle für DevSecOps 10
 ```
 
 ---
@@ -129,6 +131,16 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Modernes Resource Importing (Terraform 1.5+)**: Deklarativer Import out-of-band erstellter Azure Virtual Machines über den `import`-Block inklusive automatisierter HCL-Codegenerierung (`-generate-config-out`)
 - **Lifecycle & Cleanup**: Rückstandsfreie Deprovisionierung aller verwalteten Cloud-Ressourcen via `terraform destroy`
 
+### DevSecOps 10 – Kubernetes & Container Orchestration (Minikube & Workloads)
+
+- **Tooling & Lokaler Cluster**: Validierter Download von `kubectl` via SHA256-Checksumme, Bereitstellung von `minikube` und Start eines lokalen Clusters (`minikube start --driver=docker`)
+- **Workload-Management**: Deklarative Erstellung von Deployments (`kubectl create deployment`) und Pod-Lifecycle-Inspektion (`kubectl get pods`, `kubectl describe pod`, `kubectl logs`, `kubectl exec -it`)
+- **Resilienz & Self-Healing**: Validierung des Kubernetes Reconciliation Loops durch gezieltes Löschen von Pods (`kubectl delete pod`) und automatische Neuerstellung zur Erreichung des Desired States
+- **Service-Exposition & Routing**: Exponieren von Workloads über NodePort-Services (`kubectl expose deployment --type="NodePort"`), Adressierung über Minikube-IP und statischen NodePort
+- **Horizontale Skalierung & Load Balancing**: Hochskalieren von Replikaten (`kubectl scale --replicas=4`) und Verifikation des internen Service Round-Robin Load Balancings via HTTP (`curl`)
+- **Zero-Downtime Rolling Updates & Rollbacks**: Nahtlose Aktualisierung von Container-Images (`kubectl set image`), Überwachung des Rollout-Status (`kubectl rollout status`), Fehlerbehandlung (`ImagePullBackOff`) und automatisiertes Rollback (`kubectl rollout undo`)
+- **Lifecycle & Cleanup**: Rückstandsfreie Deprovisionierung aller Deployments und Services (`kubectl delete`)
+
 ---
 
 ## Hinweise zur Nutzung
@@ -140,5 +152,10 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
   ```
   
 - **Prerequisites**:
-  - Azure CLI (`az`) installiert und via `az login` authentifiziert
-  - Aktuelle SSH-Keys im Standardpfad (`~/.ssh/id_rsa` bzw. `~/.ssh/id_ed25519`)
+  - **Azure CLI (`az`)**: Installiert und via `az login` authentifiziert
+  - **SSH-Schlüssel**: Aktuelle SSH-Keys im Standardpfad (`~/.ssh/id_rsa` bzw. `~/.ssh/id_ed25519`)
+  - **Docker**: Lokale Docker-Engine / Docker Desktop gestartet und betriebsbereit (für ACR Container-Workflows & Minikube Docker-Driver)
+  - **Terraform**: HashiCorp Terraform CLI (Version >= 1.5 für deklarative `import`-Blöcke, DevSecOps 8)
+  - **Kubernetes Tooling**:
+    - `kubectl`: Kubernetes Command-Line Tool zur Cluster- und Workload-Verwaltung
+    - `minikube`: Lokale Single-Node-Kubernetes-Cluster-Umgebung (DevSecOps 10)
