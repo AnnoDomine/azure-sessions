@@ -21,6 +21,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **DevSecOps 7** | Container Security & Delivery (Azure Container Registry & Docker) | [`single_cmd_collection/devsecops7/`](./single_cmd_collection/devsecops7/) |
 | **DevSecOps 8** | IaC & Terraform Intro (AzureRM Provider, State, Drift & Import) | [`single_cmd_collection/devsecops8/`](./single_cmd_collection/devsecops8/) |
 | **DevSecOps 10** | Kubernetes & Container Orchestration (Minikube, Deployments, Scaling & Services) | [`single_cmd_collection/devsecops10/`](./single_cmd_collection/devsecops10/) |
+| **DevSecOps 11** | Kubernetes on Azure (AKS, ACR Integration, Load Balancing & StatefulSets) | [`single_cmd_collection/devsecops11/`](./single_cmd_collection/devsecops11/) |
 
 ---
 
@@ -43,7 +44,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── devsecops4/            # Einzelbefehle für DevSecOps 4
     ├── devsecops7/            # Einzelbefehle für DevSecOps 7
     ├── devsecops8/            # Einzelbefehle für DevSecOps 8
-    └── devsecops10/           # Einzelbefehle für DevSecOps 10
+    ├── devsecops10/           # Einzelbefehle für DevSecOps 10
+    └── devsecops11/           # Einzelbefehle für DevSecOps 11
 ```
 
 ---
@@ -140,6 +142,16 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Horizontale Skalierung & Load Balancing**: Hochskalieren von Replikaten (`kubectl scale --replicas=4`) und Verifikation des internen Service Round-Robin Load Balancings via HTTP (`curl`)
 - **Zero-Downtime Rolling Updates & Rollbacks**: Nahtlose Aktualisierung von Container-Images (`kubectl set image`), Überwachung des Rollout-Status (`kubectl rollout status`), Fehlerbehandlung (`ImagePullBackOff`) und automatisiertes Rollback (`kubectl rollout undo`)
 - **Lifecycle & Cleanup**: Rückstandsfreie Deprovisionierung aller Deployments und Services (`kubectl delete`)
+
+### DevSecOps 11 – Kubernetes on Azure (AKS, ACR & Stateful Workloads)
+
+- **Cluster-Provisionierung via IaC**: Deklarative Bereitstellung eines Azure Kubernetes Service (AKS) Clusters und Resource Group über Terraform (`azurerm_kubernetes_cluster`, System-Assigned Identity)
+- **Cluster-Konnektivität**: Abruf von Cluster-Zugangsdaten und Kubeconfig-Kontext (`az aks get-credentials`)
+- **Container Registry & Delivery**: Bereitstellung einer Azure Container Registry (`Basic`-SKU), tokenbasierte Docker-Authentifizierung (`az acr login`) sowie lokaler Image Build und Push
+- **Schlüssellose ACR-Integration (RBAC)**: Anbindung der AKS-Kubelet-Identität (System-Assigned Managed Identity) an die ACR über die Rolle `AcrPull`, Validierung mittels `az aks check-acr` und nativer Cluster-Attach (`az aks update --attach-acr`)
+- **Skalierte Web-Workload & Layer-4 Load Balancing**: Rollout eines redundanten Nginx-Deployments mit Resource Requests/Limits und automatischer Provisionierung eines Azure Standard Load Balancers über den Service-Typ `LoadBalancer`
+- **Persistente Speicherarchitektur (StatefulSet & PVC)**: Implementierung einer Notizen-Webanwendung mittels Kubernetes `StatefulSet`, `ConfigMap`-Injektion (Python HTTP-Backend & HTML-Frontend) und dynamischer Bereitstellung einer Azure Managed Disk (Persistent Volume Claim via `volumeClaimTemplates`)
+- **Lifecycle & Cleanup**: Rückstandsfreie Deprovisionierung der Cloud-Ressourcen via `terraform destroy` und `az group delete`
 
 ---
 

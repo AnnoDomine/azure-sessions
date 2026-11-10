@@ -20,3 +20,4 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 | [`DevSecOps 7`](./devsecops7/README.md) | DevSecOps 7 - Container Security & Delivery (Azure Container Registry & Docker) |
 | [`DevSecOps 8`](./devsecops8/README.md) | DevSecOps 8 - Infrastructure as Code (IaC & Terraform mit Azure) |
 | [`DevSecOps 10`](./devsecops10/README.md) | DevSecOps 10 - Kubernetes & Container Orchestration (Minikube & Workloads) |
+| [`DevSecOps 11`](./devsecops11/README.md) | DevSecOps 11 - Kubernetes on Azure (AKS, ACR & Stateful Workloads) |
