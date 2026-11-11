@@ -2,6 +2,7 @@
 /devsecops*.sh
 *.txt
 
+# GitHub Labs and Example Repos
 /prowler-env/
 /output/
 /learn-terraform-azure/
@@ -9,3 +10,4 @@
 /ansible-demo/
 /getting-started-todo-app/
 /kubernetes-on-azure/
+/k8s-security-lab/

@@ -22,6 +22,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **DevSecOps 8** | IaC & Terraform Intro (AzureRM Provider, State, Drift & Import) | [`single_cmd_collection/devsecops8/`](./single_cmd_collection/devsecops8/) |
 | **DevSecOps 10** | Kubernetes & Container Orchestration (Minikube, Deployments, Scaling & Services) | [`single_cmd_collection/devsecops10/`](./single_cmd_collection/devsecops10/) |
 | **DevSecOps 11** | Kubernetes on Azure (AKS, ACR Integration, Load Balancing & StatefulSets) | [`single_cmd_collection/devsecops11/`](./single_cmd_collection/devsecops11/) |
+| **DevSecOps 12** | Kubernetes Security (Attack Chain, RBAC Hardening, Node Escape & Kubescape) | [`single_cmd_collection/devsecops12/`](./single_cmd_collection/devsecops12/) |
 
 ---
 
@@ -45,7 +46,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── devsecops7/            # Einzelbefehle für DevSecOps 7
     ├── devsecops8/            # Einzelbefehle für DevSecOps 8
     ├── devsecops10/           # Einzelbefehle für DevSecOps 10
-    └── devsecops11/           # Einzelbefehle für DevSecOps 11
+    ├── devsecops11/           # Einzelbefehle für DevSecOps 11
+    └── devsecops12/           # Einzelbefehle für DevSecOps 12
 ```
 
 ---
@@ -153,6 +155,19 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Persistente Speicherarchitektur (StatefulSet & PVC)**: Implementierung einer Notizen-Webanwendung mittels Kubernetes `StatefulSet`, `ConfigMap`-Injektion (Python HTTP-Backend & HTML-Frontend) und dynamischer Bereitstellung einer Azure Managed Disk (Persistent Volume Claim via `volumeClaimTemplates`)
 - **Lifecycle & Cleanup**: Rückstandsfreie Deprovisionierung der Cloud-Ressourcen via `terraform destroy` und `az group delete`
 
+### DevSecOps 12 – Kubernetes Security (Attack Chain, RBAC Hardening, Node Escape & Kubescape)
+
+- **OS Command Injection (RCE)**: Ausnutzung unvalidierter Benutzereingaben im Diagnosetool (`cluster-health-dashboard`) zur Remotebefehlsausführung im Container-Kontext
+- **ServiceAccount Credential Theft**: Exfiltration des vom Kubelet automatisch gemounteten JWT-Bearer-Tokens und Namespaces (`/var/run/secrets/kubernetes.io/serviceaccount/`)
+- **Interne API-Server-Reconnaissance**: Autorisierte Abfrage der internen Kubernetes-API (`https://kubernetes.default.svc`) direkt aus dem kompromittierten Web-Container
+- **RBAC-Misconfiguration & Secret Extraction**: Aufdeckung übermäßiger Berechtigungen (`ClusterRole`) mittels `kubectl auth can-i` und Auslesen geschützter Produktionsdaten (`db-credentials`) aus dem isolierten Namespace `database`
+- **RBAC-Remediation (Least Privilege)**: Härtung des Zugriffskonstrukts durch Entfernen der globalen `ClusterRole` und Beschränkung auf eine namespaced `Role` (`fixed-role.yaml`)
+- **Privilege Escalation & Container Escape**: Missbrauch von `create pods`-Rechten zur Erstellung eines privilegierten Containers (`privileged: true`) mit Host-Mount (`hostPath: /`) und Nachweis des Durchgriffs auf das Root-Dateisystem des Kubernetes-Knotens via `minikube ssh`
+- **Cloud Metadata Protection (IMDS)**: Demonstration von SSRF- und Metadaten-Exfiltrationsrisiken gegen den simulierten Azure Instance Metadata Service (`mock-azure-imds`)
+- **Shift-Left Security & Static Analysis**: Installation von `kubescape` und statische Auditierung aller Kubernetes-Manifeste nach dem NSA/CISA Kubernetes Hardening Framework
+- **Netzwerksegmentierung & Pod Security**: Standalone-Demos zur Durchsetzung von Zero-Trust via Calico NetworkPolicies (Default-Deny & Scoped-Allow) sowie Pod Security Standards (Restricted vs. Privileged)
+- **Lifecycle & Cleanup**: Rückstandsfreie Cluster-Bereinigung via `./teardown.sh`
+
 ---
 
 ## Hinweise zur Nutzung
@@ -170,4 +185,5 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
   - **Terraform**: HashiCorp Terraform CLI (Version >= 1.5 für deklarative `import`-Blöcke, DevSecOps 8)
   - **Kubernetes Tooling**:
     - `kubectl`: Kubernetes Command-Line Tool zur Cluster- und Workload-Verwaltung
-    - `minikube`: Lokale Single-Node-Kubernetes-Cluster-Umgebung (DevSecOps 10)
+    - `minikube`: Lokale Single-Node-Kubernetes-Cluster-Umgebung (DevSecOps 10, DevSecOps 12)
+    - `kubescape`: Kubernetes Security & Compliance Scanner (DevSecOps 12)
