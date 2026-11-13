@@ -22,3 +22,4 @@ Die Bash-Syntaxfehler aus dem Original (Kommentare direkt hinter dem Zeilenumbru
 | [`DevSecOps 10`](./devsecops10/README.md) | DevSecOps 10 - Kubernetes & Container Orchestration (Minikube & Workloads) |
 | [`DevSecOps 11`](./devsecops11/README.md) | DevSecOps 11 - Kubernetes on Azure (AKS, ACR & Stateful Workloads) |
 | [`DevSecOps 12`](./devsecops12/README.md) | DevSecOps 12 - Kubernetes Security (Attack Chain, RBAC Hardening, Node Escape & Kubescape) |
+| [`DevSecOps 13`](./devsecops13/README.md) | DevSecOps 13 - Kubernetes Goat (Helm, Minikube, Cheat Sheet & [22 Solutions](./devsecops13/solutions/README.md)) |

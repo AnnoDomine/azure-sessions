@@ -23,6 +23,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **DevSecOps 10** | Kubernetes & Container Orchestration (Minikube, Deployments, Scaling & Services) | [`single_cmd_collection/devsecops10/`](./single_cmd_collection/devsecops10/) |
 | **DevSecOps 11** | Kubernetes on Azure (AKS, ACR Integration, Load Balancing & StatefulSets) | [`single_cmd_collection/devsecops11/`](./single_cmd_collection/devsecops11/) |
 | **DevSecOps 12** | Kubernetes Security (Attack Chain, RBAC Hardening, Node Escape & Kubescape) | [`single_cmd_collection/devsecops12/`](./single_cmd_collection/devsecops12/) |
+| **DevSecOps 13** | Kubernetes Goat (Helm, Minikube & 22 Security-Szenarien) | [`single_cmd_collection/devsecops13/`](./single_cmd_collection/devsecops13/) ([Solutions](./single_cmd_collection/devsecops13/solutions/README.md)) |
 
 ---
 
@@ -47,7 +48,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── devsecops8/            # Einzelbefehle für DevSecOps 8
     ├── devsecops10/           # Einzelbefehle für DevSecOps 10
     ├── devsecops11/           # Einzelbefehle für DevSecOps 11
-    └── devsecops12/           # Einzelbefehle für DevSecOps 12
+    ├── devsecops12/           # Einzelbefehle für DevSecOps 12
+    └── devsecops13/           # Einzelbefehle & Szenario-Doku für DevSecOps 13
 ```
 
 ---
@@ -168,6 +170,14 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Netzwerksegmentierung & Pod Security**: Standalone-Demos zur Durchsetzung von Zero-Trust via Calico NetworkPolicies (Default-Deny & Scoped-Allow) sowie Pod Security Standards (Restricted vs. Privileged)
 - **Lifecycle & Cleanup**: Rückstandsfreie Cluster-Bereinigung via `./teardown.sh`
 
+### DevSecOps 13 – Kubernetes Goat (Helm, Minikube & 22 Security-Szenarien)
+
+- **Tooling & Cluster-Setup**: Sichere Installation von **Helm v3** (mit GPG-Fingerprint-Verifikation des Buildkite-APT-Keys), `kubectl` sowie `minikube start --driver=docker`
+- **Lab-Provisioning & Zugriff**: Klonen von `madhuakula/kubernetes-goat`, Rollout aller verwundbaren Workloads (`setup-kubernetes-goat.sh`), Port-Forwarding (`1230`–`1236` via `access-kubernetes-goat.sh`) und Bereinigung (`teardown-kubernetes-goat.sh`)
+- **Secrets & Supply Chain**: Auslesen exponierter `.git`-Repositories (`git-dumper`, `TruffleHog`), offener Private Container Registries (`/v2/_catalog`), versteckter Docker-Image-Layer (`docker history`, `dfimage`, `layer.tar`) sowie geleakter `ENV`-Variablen
+- **Container Escape & Netzwerk**: Exploitation gemounteter `containerd.sock`-Sockets (`crictl`), privilegierter `hostPath`-Mounts (`chroot`), SSRF auf interne Dienste (`metadata-db`), offener `NodePort`s sowie Namespace-Bypassing (`zmap`, `redis-cli`) und Isolation via `NetworkPolicy`
+- **RBAC, Auditing & Runtime Defense**: Analyse überprivilegierter ServiceAccounts, CIS Benchmarks (`docker-bench-security`, `kube-bench`), Cluster-Auditing (`kubeaudit`, `popeye`), eBPF/Kernel-Runtime-Monitoring (`Falco`, `Cilium Tetragon`) und Policy Enforcement (`Kyverno`)
+
 ---
 
 ## Hinweise zur Nutzung
@@ -185,5 +195,6 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
   - **Terraform**: HashiCorp Terraform CLI (Version >= 1.5 für deklarative `import`-Blöcke, DevSecOps 8)
   - **Kubernetes Tooling**:
     - `kubectl`: Kubernetes Command-Line Tool zur Cluster- und Workload-Verwaltung
-    - `minikube`: Lokale Single-Node-Kubernetes-Cluster-Umgebung (DevSecOps 10, DevSecOps 12)
+    - `minikube`: Lokale Single-Node-Kubernetes-Cluster-Umgebung (DevSecOps 10, DevSecOps 12, DevSecOps 13)
+    - `helm`: Kubernetes Package Manager (Helm v3, DevSecOps 13)
     - `kubescape`: Kubernetes Security & Compliance Scanner (DevSecOps 12)
