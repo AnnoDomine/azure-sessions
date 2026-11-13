@@ -1,6 +1,7 @@
 /cloud*.sh
 /devsecops*.sh
 *.txt
+missing_docs.md
 
 # GitHub Labs and Example Repos
 /prowler-env/

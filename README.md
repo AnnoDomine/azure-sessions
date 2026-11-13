@@ -10,6 +10,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 
 | Session | Thema | Einzelbefehle |
 | --- | --- | --- |
+| **Cloud 1** | Intro to Cloud (CapEx/OpEx, IaaS/PaaS/SaaS, Resource Groups & Storage) | [`single_cmd_collection/cloud1/`](./single_cmd_collection/cloud1/) |
+| **Cloud 2** | Virtual Machines & Compute (IaaS/PaaS/Serverless, SKUs & NSG) | [`single_cmd_collection/cloud2/`](./single_cmd_collection/cloud2/) |
 | **Cloud 3** | Virtual Networking (VNets, Subnetze, VMs, Bastion, Run-Command) | [`single_cmd_collection/cloud3/`](./single_cmd_collection/cloud3/) |
 | **Cloud 4** | Storage & Databases (Storage Accounts, Blobs, SAS, Access Tiers) | [`single_cmd_collection/cloud4/`](./single_cmd_collection/cloud4/) |
 | **Cloud 5** | Load Balancing & WAF (Standard LB, App Gateway, OWASP WAF, Network Watcher) | [`single_cmd_collection/cloud5/`](./single_cmd_collection/cloud5/) |
@@ -17,9 +19,15 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **Cloud 7** | Governance & Monitoring (Resource Locks, Azure Policy, Monitor, Tags, Advisor) | [`single_cmd_collection/cloud7/`](./single_cmd_collection/cloud7/) |
 | **Cloud 8** | FinOps & Cost Management (Advisor Cost, VM Deallocate/Auto-Shutdown, Unattached Disks, Budgets, Tag-Policy) | [`single_cmd_collection/cloud8/`](./single_cmd_collection/cloud8/) |
 | **Cloud 9** | Defender for Cloud & Security Auditing (Prowler) | [`single_cmd_collection/cloud9/`](./single_cmd_collection/cloud9/) |
+| **DevSecOps 1** | DevOps: The Security Perspective (Shift-Left, SolarWinds & Git Basics) | [`single_cmd_collection/devsecops1/`](./single_cmd_collection/devsecops1/) |
+| **DevSecOps 2** | GitHub Actions & CI/CD (Workflows, Trigger, Secrets & Action Pinning) | [`single_cmd_collection/devsecops2/`](./single_cmd_collection/devsecops2/) |
+| **DevSecOps 3** | Code Scanning & Security Tools in CI (Gitleaks & Trivy SARIF) | [`single_cmd_collection/devsecops3/`](./single_cmd_collection/devsecops3/) |
 | **DevSecOps 4** | Secrets Management (Azure Key Vault, RBAC & Managed Identity) | [`single_cmd_collection/devsecops4/`](./single_cmd_collection/devsecops4/) |
+| **DevSecOps 5** | Software Supply Chain Security (Dependabot, SBOM & Trivy) | [`single_cmd_collection/devsecops5/`](./single_cmd_collection/devsecops5/) |
+| **DevSecOps 6** | Containers & Docker (Images, Volumes, Netzwerke & Compose) | [`single_cmd_collection/devsecops6/`](./single_cmd_collection/devsecops6/) |
 | **DevSecOps 7** | Container Security & Delivery (Azure Container Registry & Docker) | [`single_cmd_collection/devsecops7/`](./single_cmd_collection/devsecops7/) |
 | **DevSecOps 8** | IaC & Terraform Intro (AzureRM Provider, State, Drift & Import) | [`single_cmd_collection/devsecops8/`](./single_cmd_collection/devsecops8/) |
+| **DevSecOps 9** | Securing Infrastructure as Code (TerraGoat, Trivy & State Security) | [`single_cmd_collection/devsecops9/`](./single_cmd_collection/devsecops9/) |
 | **DevSecOps 10** | Kubernetes & Container Orchestration (Minikube, Deployments, Scaling & Services) | [`single_cmd_collection/devsecops10/`](./single_cmd_collection/devsecops10/) |
 | **DevSecOps 11** | Kubernetes on Azure (AKS, ACR Integration, Load Balancing & StatefulSets) | [`single_cmd_collection/devsecops11/`](./single_cmd_collection/devsecops11/) |
 | **DevSecOps 12** | Kubernetes Security (Attack Chain, RBAC Hardening, Node Escape & Kubescape) | [`single_cmd_collection/devsecops12/`](./single_cmd_collection/devsecops12/) |
@@ -33,9 +41,12 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 .
 ├── AGENTS.md                  # Verhaltensregeln für AI-Agents (Ausführungsverbot)
 ├── README.md                  # Zentrale Übersicht (dieses Dokument)
+├── init.sh                    # System-Check & Installation aller benötigten CLI-Tools
 ├── Dockerfile                 # Beispiel Dockerfile
 └── single_cmd_collection/     # Modulare Befehlssammlung nach Sessions unterteilt
     ├── README.md              # Übersicht über alle Sessions in der Sammlung
+    ├── cloud1/                # Einzelbefehle für Cloud 1
+    ├── cloud2/                # Einzelbefehle für Cloud 2
     ├── cloud3/                # Einzelbefehle für Cloud 3
     ├── cloud4/                # Einzelbefehle für Cloud 4
     ├── cloud5/                # Einzelbefehle für Cloud 5
@@ -43,18 +54,36 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── cloud7/                # Einzelbefehle für Cloud 7
     ├── cloud8/                # Einzelbefehle für Cloud 8
     ├── cloud9/                # Einzelbefehle für Cloud 9
+    ├── devsecops1/            # Einzelbefehle für DevSecOps 1
+    ├── devsecops2/            # Workflow-Doku für DevSecOps 2
+    ├── devsecops3/            # CI-Security-Workflows für DevSecOps 3
     ├── devsecops4/            # Einzelbefehle für DevSecOps 4
+    ├── devsecops5/            # SBOM- & Supply-Chain-Doku für DevSecOps 5
+    ├── devsecops6/            # Docker-Einzelbefehle für DevSecOps 6
     ├── devsecops7/            # Einzelbefehle für DevSecOps 7
     ├── devsecops8/            # Einzelbefehle für DevSecOps 8
+    ├── devsecops9/            # IaC-Security-Befehle für DevSecOps 9
     ├── devsecops10/           # Einzelbefehle für DevSecOps 10
     ├── devsecops11/           # Einzelbefehle für DevSecOps 11
     ├── devsecops12/           # Einzelbefehle für DevSecOps 12
-    └── devsecops13/           # Einzelbefehle & Szenario-Doku für DevSecOps 13
+    └── devsecops13/           # Einzelbefehle, Cheat Sheet & Solutions für DevSecOps 13
 ```
 
 ---
 
 ## Themenübersicht
+
+### Cloud 1 – Intro to Cloud & Erste Azure-Ressourcen
+
+- **Cloud-Grundlagen**: CapEx vs. OpEx, Private/Public/Hybrid Cloud sowie IaaS, PaaS und SaaS
+- **Azure-Hierarchie & Governance**: Abonnements, Resource Groups, Regionen/Availability Zones sowie Auto-Shutdown und Lifecycle-Governance
+- **Erste CLI-Schritte**: Resource Group (`az group create`), Storage Account (`az storage account create --sku Standard_LRS`), Detail- und Ressourcenabfrage (`az storage account show`, `az resource list`) sowie Cleanup (`az group delete`)
+
+### Cloud 2 – Virtual Machines & Compute
+
+- **Compute-Modelle**: Verantwortungsabgrenzung zwischen IaaS, PaaS und Serverless
+- **VM-Planung & SKUs**: Region, Image, Größe (z. B. Burstable `Standard_B1s` bis `Standard_D2s_v7`) und Datenträger
+- **Stateful NSG-Firewall via `az` CLI**: Automatische `Allow SSH`-Regel (Port `22`) bei `az vm create`, dynamische Extraktion von `PUBLIC_IP`/`NSG_NAME` und Effekt von `az network nsg rule delete` auf bestehende vs. neue Verbindungen
 
 ### Cloud 3 – Virtual Networking
 
@@ -110,6 +139,23 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Multi-Format Reporting**: Generierung detaillierter Berichtsartefakte im interaktiven HTML-Format, tabellarischen CSV-Format und standardisierten JSON-OCSF-Format (`-M html csv json-ocsf`)
 - **Lokale Report-Bereitstellung**: Lokaler Python-Webserver (`python3 -m http.server 8000`) zur bequemen Inspektion und Analyse des HTML-Sicherheits-Dashboards
 
+### DevSecOps 1 – DevOps: The Security Perspective
+
+- **DevOps & Shift-Left**: Einreißen der Silos zwischen Dev und Ops, Sicherheitsprüfungen in jeder SDLC-Phase und exponentielle Kostenersparnis bei früher Fehlererkennung
+- **Supply-Chain-Risiko**: Lehren aus dem **SolarWinds-Vorfall (2020)** durch kompromittierte Build-Umgebungen
+- **Git-Grundlagen**: Lokales Repository (`git init`, `git add`, `git commit`, `git log --oneline`) sowie Pull Requests als Sicherheitsschleuse
+
+### DevSecOps 2 – GitHub Actions & CI/CD
+
+- **CI/CD-Architektur**: Workflows in `.github/workflows/`, Trigger (`push`, `pull_request`, `schedule`, `workflow_dispatch`), parallele/abhängige Jobs (`needs`) und isolierte Runner
+- **Secrets & Sicherheit**: Verschlüsselte GitHub Actions Secrets (`${{ secrets.DEMO_KEY }}`), Log-Maskierung sowie **Action Pinning** gegen Workflow-Poisoning
+
+### DevSecOps 3 – Code Scanning & Security Tools in CI
+
+- **SAST vs. DAST**: Statische Code-/Konfigurationsanalyse vs. dynamisches Testen laufender Anwendungen
+- **Gitleaks**: Secret-Scanning über die gesamte Git-Historie (`fetch-depth: 0` mit `gitleaks-action@v2`)
+- **Trivy & SARIF**: Automatisierte Schwachstellen-/Fehlkonfigurations-Scans (`table` + `sarif`) mit Upload in den GitHub Security Tab (`upload-sarif@v4`)
+
 ### DevSecOps 4 – Secrets Management (Azure Key Vault, RBAC & Managed Identity)
 
 - **Key Vault & RBAC Authorization**: Bereitstellung eines Azure Key Vaults mit nativer Entra ID RBAC-Autorisierung (`--enable-rbac-authorization true`) anstelle traditioneller Access Policies
@@ -118,6 +164,18 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Zero-Secret Compute-Architektur**: Bereitstellung einer Ubuntu-VM mit System-Assigned Managed Identity (`az vm identity assign`)
 - **Least-Privilege Datenebene**: Zuweisung der minimal erforderlichen Leserolle (`Key Vault Secrets User`) an die Identität der VM
 - **IMDS & Remote Execution**: Remote-Installation der Azure CLI (`deb_install.sh`) via Azure VM Run-Command, tokenbasierte Authentifizierung (`az login --identity`) und schlüsselloser Secret-Abruf über den Azure Instance Metadata Service (IMDS)
+
+### DevSecOps 5 – Software Supply Chain Security
+
+- **Lieferketten-Risiken**: Angriffsvektoren auf Abhängigkeiten, Quellcode, Build-Systeme und Artefakte (Fallstudien **XZ Utils** & **Shai-Hulud**)
+- **Dependabot & SBOM**: Automatisierte Alerts/PRs sowie Erstellung und Prüfung von CycloneDX-SBOMs mit **Trivy** (`trivy fs --format cyclonedx`, `trivy sbom`)
+- **Paket-Risiken**: Schutz vor **Typosquatting** (`urlib3` vs. `urllib3`) und KI-Halluzinationen (**Slopsquatting**)
+
+### DevSecOps 6 – Containers & Docker
+
+- **Container-Grundlagen**: VMs vs. Container (shared Host-Kernel & Container-Escape-Risiko), Docker-Client/Daemon/Registry
+- **Dockerfiles & Persistenz**: Gecachte Image-Layer (`FROM`, `WORKDIR`, `COPY`, `RUN`, `CMD`), flüchtige Container-Schichten, Volumes vs. Bind-Mounts
+- **Netzwerke & Compose**: Port-Mapping (`-p 8080:80`), Service Discovery in `docker-compose.yml` und Secrets via `.env`
 
 ### DevSecOps 7 – Container Security & Delivery (Azure Container Registry & Docker)
 
@@ -136,6 +194,12 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Deklarative Infrastruktur-Evolution**: Inkrementelle Erweiterung bestehender HCL-Konfigurationen um Metadaten-Tags und Virtual Networks (`azurerm_virtual_network`)
 - **Modernes Resource Importing (Terraform 1.5+)**: Deklarativer Import out-of-band erstellter Azure Virtual Machines über den `import`-Block inklusive automatisierter HCL-Codegenerierung (`-generate-config-out`)
 - **Lifecycle & Cleanup**: Rückstandsfreie Deprovisionierung aller verwalteten Cloud-Ressourcen via `terraform destroy`
+
+### DevSecOps 9 – Securing Infrastructure as Code (TerraGoat & Trivy)
+
+- **Gültig ≠ Sicher**: Erkennen unsicherer, aber syntaktisch valider Terraform-Konfigurationen (z. B. NSG `AllowSSH` mit `source_address_prefix = "*"`)
+- **IaC-Scanning**: Statische Analyse von `bridgecrewio/terragoat` via `trivy config .` und `--severity HIGH,CRITICAL`, Abgrenzung KI-Tools vs. deterministische Scanner
+- **Supply Chain & State Security**: Risiken externer Terraform-Module (Fallstudie Coder 2026) und Schutz von Klartext-Secrets in `terraform.tfstate` über zentrales Azure Storage
 
 ### DevSecOps 10 – Kubernetes & Container Orchestration (Minikube & Workloads)
 
@@ -182,6 +246,13 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 
 ## Hinweise zur Nutzung
 
+- **System-Initialisierung (`init.sh`)**: Prüft alle benötigten CLI-Tools (`az`, `gh`, `docker`, `terraform`, `trivy`, `gitleaks`, `kubectl`, `minikube`, `helm`, `kubescape`) auf Ubuntu/Debian und installiert fehlende Pakete automatisch:
+
+  ```bash
+  chmod +x init.sh
+  ./init.sh
+  ```
+
 - **Umgebungsvariablen**: Vor dem manuellen Ausführen einzelner Skripte sollten stets die entsprechenden Variablen (`00_env_variables.sh` bzw. zu Beginn der Session) geladen werden:
 
   ```bash
@@ -190,9 +261,14 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
   
 - **Prerequisites**:
   - **Azure CLI (`az`)**: Installiert und via `az login` authentifiziert
+  - **GitHub CLI (`gh`)**: Für Repository-, Secret- und Workflow-Operationen (`gh auth login`, DevSecOps 1–3, 5)
   - **SSH-Schlüssel**: Aktuelle SSH-Keys im Standardpfad (`~/.ssh/id_rsa` bzw. `~/.ssh/id_ed25519`)
-  - **Docker**: Lokale Docker-Engine / Docker Desktop gestartet und betriebsbereit (für ACR Container-Workflows & Minikube Docker-Driver)
-  - **Terraform**: HashiCorp Terraform CLI (Version >= 1.5 für deklarative `import`-Blöcke, DevSecOps 8)
+  - **Docker**: Lokale Docker-Engine / Docker Desktop gestartet und betriebsbereit (DevSecOps 6–7, 10–13)
+  - **Security-Scanner & Auditing**:
+    - `gitleaks`: Secret-Scanning in Git-Repositories (DevSecOps 3)
+    - `trivy`: Schwachstellen-, SBOM- und IaC-Scanner (DevSecOps 3, 5, 9)
+    - `prowler`: Multi-Service Azure Security Assessment in Python-venv (Cloud 9)
+  - **Terraform**: HashiCorp Terraform CLI (Version >= 1.5 für deklarative `import`-Blöcke, DevSecOps 8, 9, 11)
   - **Kubernetes Tooling**:
     - `kubectl`: Kubernetes Command-Line Tool zur Cluster- und Workload-Verwaltung
     - `minikube`: Lokale Single-Node-Kubernetes-Cluster-Umgebung (DevSecOps 10, DevSecOps 12, DevSecOps 13)
