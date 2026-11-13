@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind **Angriffsvektoren auf die Software-Liefe
 
 ---
 
-## Übersicht der Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -12,7 +12,7 @@ Themenschwerpunkte dieser Session sind **Angriffsvektoren auf die Software-Liefe
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. Lieferketten-Komponenten & reale Angriffsmuster
 - **Build-Pipeline (Fabrik)**, **Paket-Registries / Netzwerke (Lieferwagen)** und **Artefakt-/Container-Registries (Lager)** bilden zusammen die Software-Lieferkette.

@@ -31,3 +31,21 @@ Themenschwerpunkte sind **Azure Governance** mittels **Resource Locks (`CanNotDe
 | [`20_az_advisor_recommendation_list.sh`](./20_az_advisor_recommendation_list.sh) | Listet aktuelle Empfehlungen von Azure Advisor nach Kategorie und Problem auf |
 | [`21_az_lock_delete.sh`](./21_az_lock_delete.sh) | Entfernt den Resource Lock `no-delete` vor der Bereinigung |
 | [`22_az_group_delete.sh`](./22_az_group_delete.sh) | Löscht die gesamte Resource Group zur Bereinigung |
+
+---
+
+## Workflow & Erläuterungen
+
+### 1. Präventive Governance: Resource Locks & Azure Policy
+- **Resource Locks (`CanNotDelete` / `ReadOnly`)**: Schützen bestehende Ressourcen vor versehentlichem Löschen oder Ändern und **überschreiben selbst RBAC-`Owner`-Berechtigungen** (vor `az group delete` muss der Lock in `21_az_lock_delete.sh` explizit entfernt werden).
+- **Azure Policy (`Allowed locations`)**: Blockiert neue nicht-konforme Bereitstellungen (hier `westus` statt `germanywestcentral`) mit dem Fehler **`RequestDisallowedByPolicy`**. Bereits vorher existierende Ressourcen laufen weiter, werden aber im Compliance-Bericht als *Non-Compliant* markiert.
+- **Side-Note**: Neu zugewiesene Policies benötigen ca. **1–2 Minuten** bis zur Durchsetzung.
+
+### 2. Detektive Observability: Azure Monitor, Alerts & Activity Log
+- **Metriken & Alerts**: `az monitor metrics list` fragt Zeitreihendaten (`Percentage CPU` im `PT1M`-Intervall) ab; überschreitet der Durchschnitt 80 % über 5 Minuten, löst die Metric Alert Rule (`high-cpu`) eine **Action Group** (`cloud7-ag`) zur Benachrichtigung aus.
+- **Activity Log**: Dient als Kontroll- und Audit-Trail für alle Control-Plane-Operationen (z. B. wer eine VM erstellt, geändert oder gelöscht hat).
+
+### 3. Resource Health vs. Service Health & Azure Advisor
+- **Resource Health** (`Microsoft.ResourceHealth` via `az rest`): Prüft den Zustand einer einzelnen Ressource (*„Ist meine VM abgestürzt?“*); **Service Health** dagegen zeigt regionale oder plattformweite Azure-Störungen.
+- **Azure Advisor**: Analysiert die Umgebung automatisiert entlang der **5 Säulen** (*Reliability, Security, Performance, Cost, Operational Excellence*).
+- **Tagging (`CostCenter=000`)**: Ermöglicht eine eindeutige Kostenstellen- und Team-Zuordnung.

@@ -1,6 +1,6 @@
-# Cybersteps Azure CLI Labs
+# Azure & DevSecOps CLI Labs
 
-Eine minimalistische Wissens- und Befehlsdatenbank für die **Azure Sessions** auf Cybersteps unter Nutzung der **Azure CLI (`az`)** auf einer Linux-Distribution.
+Eine minimalistische Wissens- und Befehlsdatenbank für **Azure Cloud & DevSecOps** unter Nutzung der **Azure CLI (`az`)** und moderner Security-Tools auf Ubuntu Linux.
 
 Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärungen zu den Parametern.
 

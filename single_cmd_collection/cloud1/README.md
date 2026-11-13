@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind die **Cloud-Architekturmodelle (CapEx vs.
 
 ---
 
-## Übersicht der Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -17,7 +17,7 @@ Themenschwerpunkte dieser Session sind die **Cloud-Architekturmodelle (CapEx vs.
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. Ökonomie & Betriebsmodelle (CapEx vs. OpEx)
 - **CapEx (Capital Expenditure)**: Vorabinvestition in physische Hardware, feste Kapazitätsplanung und Abschreibung.

@@ -33,3 +33,20 @@ Themenschwerpunkte sind Layer-4-Lastverteilung mit **Azure Standard Load Balance
 | [`22_az_network_watcher_test_ip_flow_http.sh`](./22_az_network_watcher_test_ip_flow_http.sh) | Prüft via Network Watcher (`test-ip-flow`), ob eingehender Traffic auf Port 80 (`web2`) erlaubt ist |
 | [`23_az_network_watcher_test_ip_flow_ssh.sh`](./23_az_network_watcher_test_ip_flow_ssh.sh) | Prüft via Network Watcher (`test-ip-flow`), ob eingehender Traffic auf Port 22 (`web2`) erlaubt ist |
 | [`24_az_group_delete.sh`](./24_az_group_delete.sh) | Löscht die gesamte Resource Group zur Bereinigung |
+
+---
+
+## Workflow & Erläuterungen
+
+### 1. Layer-4 Load Balancing (Azure Standard Load Balancer)
+- Arbeitet auf **OSI-Schicht 4 (TCP/UDP & Ports)** mit minimaler Latenz – ideal für nicht-HTTP-Workloads (z. B. Datenbanken, Custom-UDP-Protokolle) und schnelles Failover.
+- Eine **TCP Health Probe** auf Port `80` erkennt ausgefallene Backend-Knoten (`web1` bei `az vm stop`), sodass der Load Balancer den Traffic automatisch ausschließlich auf gesunde Instanzen (`web2`) umleitet.
+
+### 2. Layer-7 Application Gateway & WAF (`WAF_v2`)
+- Arbeitet auf **OSI-Schicht 7 (HTTP/HTTPS/WebSocket)** und ermöglicht **URL-pfadbasiertes Routing**, zentrales **SSL/TLS-Offloading** (entlastet Backend-VMs) sowie **Web Application Firewall (WAF)**-Schutz.
+- Die WAF-Policy nutzt das **OWASP CRS 3.2**-Regelwerk im **`Prevention`-Modus**, um Angriffe wie SQL Injection oder Cross-Site Scripting (XSS) vor Erreichen des Backends aktiv zu blockieren.
+- **Side-Note**: Für das Application Gateway ist ein eigenes, dediziertes Subnetz (`appgw-subnet`) erforderlich.
+
+### 3. Netzwerkdiagnose mit Azure Network Watcher
+- **Passives Diagnose-Toolset**: Greift nicht aktiv in das Routing ein, sondern prüft effektive Sicherheitsregeln.
+- **`az network watcher test-ip-flow`**: Simuliert Datenverkehr auf einem Zielport (hier Port `80` erlaubt vs. Port `22` blockiert) und identifiziert exakt die greifende NSG-Regel – die ideale erste Diagnose bei Verbindungsproblemen (ergänzt durch **NSG Flow Logs** für forensische Audits).

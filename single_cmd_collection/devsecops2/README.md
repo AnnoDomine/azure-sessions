@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind die **GitHub-Actions-Architektur (`.githu
 
 ---
 
-## Übersicht der Dateien & Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -14,7 +14,7 @@ Themenschwerpunkte dieser Session sind die **GitHub-Actions-Architektur (`.githu
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. Runner-Isolation & Sicherheitskontext
 - Jeder Job läuft standardmäßig auf einer frischen, ephemeren VM (`ubuntu-latest`, `windows-latest`, `macos-latest`), Jobs laufen parallel und lassen sich über `needs:` verketten.

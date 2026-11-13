@@ -23,3 +23,24 @@ Themenschwerpunkte sind die Abfrage von **Microsoft Entra ID** Benutzer- und Sub
 | [`12_az_role_assignment_create_contributor_vm.sh`](./12_az_role_assignment_create_contributor_vm.sh) | Vergibt `Contributor`-Rechte gezielt auf den Scope der einzelnen VM (`$VM_SCOPE`) |
 | [`13_az_role_assignment_list_principal.sh`](./13_az_role_assignment_list_principal.sh) | Überprüft alle zugewiesenen RBAC-Rollen für `$PRINCIPAL_ID` über alle Scopes (`--all`) |
 | [`14_az_group_delete.sh`](./14_az_group_delete.sh) | Löscht die gesamte Resource Group zur Bereinigung |
+
+---
+
+## Workflow & Erläuterungen
+
+### 1. AuthN (Entra ID) vs. AuthZ (Azure RBAC)
+- **Authentication (AuthN – „Wer bist du?“)**: Identitätsprüfung über **Microsoft Entra ID** (Passwort, MFA, FIDO2/Biometrie). Entra ID besitzt zudem eigene Verzeichnisrollen (z. B. `Global Administrator` auf Tenant-Ebene), die strikt von Azure-Ressourcenrollen getrennt sind.
+- **Authorization (AuthZ – „Was darfst du?“)**: Berechtigungsprüfung auf Azure-Ressourcen über **Azure RBAC**.
+
+### 2. Anatomie eines Role Assignments & Vererbung
+- Jedes Azure RBAC Role Assignment besteht aus drei Komponenten: **Security Principal** (*Wer*) + **Role Definition** (*Was*) + **Scope** (*Wo*).
+- **Scope-Hierarchie**: `Management Group → Subscription → Resource Group → Ressource`. Berechtigungen vererben sich nach unten an alle untergeordneten Ressourcen.
+- **Built-in Kernrollen**:
+  - `Owner`: Vollzugriff inklusive Vergabe von Berechtigungen (höchstes Risiko).
+  - `Contributor`: Vollzugriff auf Ressourcen, darf jedoch **keine** Berechtigungen/Access verwalten.
+  - `Reader`: Reiner Lesezugriff ohne Schreib- oder Löschrechte.
+
+### 3. Managed Identities & Principle of Least Privilege (PoLP)
+- Mit `--assign-identity` erhält die VM `mi-vm` eine **System-Assigned Managed Identity** (gekoppelt an den Lebenszyklus der VM), deren `principalId` per `--query` ausgelesen wird.
+- Anstatt statische Zugangsdaten im Code zu hinterlegen, erhält diese Identität `Reader`-Rechte auf die Resource Group und `Contributor`-Rechte ausschließlich auf die einzelne VM (*kleinster möglicher Scope*).
+- **Side-Note**: Neu zugewiesene RBAC-Berechtigungen können aufgrund der Replikation ca. **1–2 Minuten** benötigen, bis sie wirksam werden.

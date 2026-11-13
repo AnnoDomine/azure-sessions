@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind die **Compute-Modelle (IaaS, PaaS, Server
 
 ---
 
-## Übersicht der Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -17,7 +17,7 @@ Themenschwerpunkte dieser Session sind die **Compute-Modelle (IaaS, PaaS, Server
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. Compute-Modelle & Verantwortungsabgrenzung
 - **IaaS (Virtual Machines)**: Volle Kontrolle über Kernel, OS-Patches, Firewall und Laufzeitumgebung – ideal für Legacy-Workloads oder spezielle Treiber/Systemkonfigurationen.

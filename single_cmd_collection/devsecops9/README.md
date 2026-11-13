@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind **IaC-Fehlkonfigurationen** (*Gültig ≠
 
 ---
 
-## Übersicht der Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -15,7 +15,7 @@ Themenschwerpunkte dieser Session sind **IaC-Fehlkonfigurationen** (*Gültig ≠
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. Gültig ≠ Sicher (`terraform validate` vs. Security-Scan)
 - `terraform validate` prüft ausschließlich HCL-Syntax und Schema-Konsistenz. Eine Regel wie `azurerm_network_security_rule` mit `destination_port_range = "22"` und `source_address_prefix = "*"` ist syntaktisch zu 100 % valide, öffnet aber SSH weltweit.

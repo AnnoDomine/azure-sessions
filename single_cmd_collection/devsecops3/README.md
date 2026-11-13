@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind automatisiertes **Code-Scanning in CI/CD*
 
 ---
 
-## Übersicht der Dateien & Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -14,7 +14,7 @@ Themenschwerpunkte dieser Session sind automatisiertes **Code-Scanning in CI/CD*
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. SAST vs. DAST in der Pipeline
 - **SAST (Static Application Security Testing)**: Prüft Quellcode, Abhängigkeiten und Konfigurationsdateien ohne Ausführung (schnell, ideal für jeden Commit/PR).

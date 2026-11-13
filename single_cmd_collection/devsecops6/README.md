@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind die **Linux-Kernel-Grundlagen von Contain
 
 ---
 
-## Übersicht der Dateien & Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -16,7 +16,7 @@ Themenschwerpunkte dieser Session sind die **Linux-Kernel-Grundlagen von Contain
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. VMs vs. Container & Security-Implikation
 - **VMs**: Hardware-Virtualisierung per Hypervisor; jeder Gast bringt einen eigenen OS-Kernel mit.

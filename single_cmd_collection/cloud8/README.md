@@ -30,3 +30,23 @@ Themenschwerpunkte sind **FinOps & Cloud-Kostenoptimierung** mittels **Azure Adv
 | [`19_az_policy_assignment_create.sh`](./19_az_policy_assignment_create.sh) | Weist die Pflicht-Tag-Policy (`require-tag-owner`) auf die Resource Group zu |
 | [`20_az_vm_create_tagged.sh`](./20_az_vm_create_tagged.sh) | Erstellt die Policy-konforme Test-VM `test-tag-vm-cloud8` inklusive Pflicht-Tag `owner=$SUB` |
 | [`21_az_group_delete.sh`](./21_az_group_delete.sh) | Löscht die gesamte Resource Group zur Bereinigung |
+
+---
+
+## Workflow & Erläuterungen
+
+### 1. Azure Abrechnungsmodell & `Stopped` vs. `Deallocated`
+- **Pay-as-you-go**: Sekundengenaue Abrechnung ab Bereitstellung; **Egress** (ausgehender Traffic) wird berechnet, **Ingress** ist in der Regel kostenlos.
+- **Kritischer VM-Unterschied**:
+  - Ein Shutdown *innerhalb des Gast-OS* (`sudo shutdown`) versetzt die VM in den Status **`Stopped`** – die Compute-Hardware bleibt reserviert und wird **weiter berechnet**.
+  - Erst **`az vm deallocate`** (`10_az_vm_deallocate.sh`) gibt die Compute-Ressourcen frei (**`Deallocated`**) – ab diesem Moment fallen nur noch Kosten für die Managed Disk an.
+- **Auto-Shutdown (`11_az_vm_auto_shutdown.sh`)**: Konfiguriert ein kostenloses tägliches Herunterfahren (hier `21:00` Uhr) zur Vermeidung vergessener Dev/Test-VMs.
+
+### 2. Waste Detection: Advisor Cost & Verwaiste Disks
+- **Azure Advisor (`--category Cost --refresh`)**: Identifiziert unterausgelastete VMs (*Rightsizing*) sowie Einsparpotenziale (z. B. Reserved Instances).
+- **Verwaiste Ressourcen (`managedBy==null`)**: Das Löschen einer VM entfernt zugehörige Managed Disks, Snapshots, NICs oder Public IPs nicht automatisch. Skript `12` spürt gezielt nicht zugeordnete Disks auf, die sonst monatlich weiter abgerechnet werden.
+
+### 3. Budgets & Tag-Governance (FinOps-Guardrails)
+- **Budgets (`az consumption budget`)**: Senden Schwellenwert-Warnungen (z. B. bei 80 % / 100 % Auslastung). **Wichtig**: Ein Azure Budget ist **kein hartes Spending Cap** – es stoppt oder löscht keine laufenden Ressourcen automatisch.
+- **Tags & Pflicht-Policy**: Metadaten-Tags (`project`, `team`, `owner`) ermöglichen Cost Allocation in der Kostenanalyse; über `Require a tag on resources` werden neue Ressourcen ohne `owner`-Tag bereits bei der Erstellung blockiert.
+- **Side-Note (Security Signal)**: Unerwartete Kostenspitzen außerhalb der Geschäftszeiten, fremde Regionen oder untagged VMs sind oft ein frühes Indiz für kompromittierte Accounts oder Cryptomining.

@@ -41,3 +41,20 @@ Themenschwerpunkte sind Azure Blob Storage (Lifecycle, SAS, Access Tiers) und Az
 | [`30_psql_test_version.sh`](./30_psql_test_version.sh) | Testet DB-Verbindung via `psql` (`SELECT version();`) |
 | [`31_psql_table_roundtrip.sh`](./31_psql_table_roundtrip.sh) | Führt SQL-Roundtrip aus (`CREATE TABLE`, `INSERT`, `SELECT`) |
 | [`32_az_group_delete.sh`](./32_az_group_delete.sh) | Löscht die gesamte Resource Group zur Bereinigung |
+
+---
+
+## Workflow & Erläuterungen
+
+### 1. Azure Storage Account & Blob Access Tiers
+- Ein **Storage Account** bündelt die Dienste **Blob** (unstrukturierte Objekte via HTTPS), **Files** (SMB), **Queue** und **Table**; der Name muss global eindeutig sein (3–24 Kleinbuchstaben/Ziffern).
+- **Access Tiers (`Hot` / `Cool` / `Archive`)**: `Hot` optimiert für häufige Zugriffe (niedrigere Transaktionskosten), `Cool` für seltener genutzte Daten (mind. 30 Tage), `Archive` für Langzeitarchivierung (offline; erfordert vor dem Lesen eine mehrstündige *Rehydration*).
+
+### 2. SAS-Tokens vs. Account Keys & Public Access
+- **Account Keys** gewähren dauerhafte, uneingeschränkte Admin-Rechte auf den gesamten Storage Account. Für zeitlich und funktional begrenzte Zugriffe sind **Shared Access Signatures (SAS)** (hier 15 Min. Gültigkeit, Read-Only) vorzuziehen – überlange oder zu breit berechtigte SAS-Tokens in Repositories sind ein häufiges Leak-Risiko.
+- **Public Blob Access**: Bleibt standardmäßig sowohl auf Account-Ebene (`--allow-blob-public-access false`) als auch auf Container-Ebene (`off` / `Private`) deaktiviert; die Skripte `19`–`22` demonstrieren das gezielte Öffnen und anschließende Wiederverschließen.
+
+### 3. Managed PostgreSQL Flexible Server (PaaS)
+- Im Gegensatz zu selbst verwalteten DBs auf einer VM (IaaS) übernimmt Azure bei **PaaS** das OS-/DB-Patching, automatische Backups mit **Point-in-Time Restore (PITR)** sowie **Transparent Data Encryption (TDE)** im Ruhezustand.
+- Die Anmeldung erfolgt nach Registrierung von `Microsoft.DBforPostgreSQL` und Freigabe der eigenen Client-IP in der Server-Firewall auf Port `5432` (`<server>.postgres.database.azure.com`) über `psql`.
+- **Side-Note**: Für produktive Workloads sollte zusätzlich **Entra ID Authentication** statt statischer SQL-Logins sowie **Private Endpoint** statt öffentlicher IP-Firewallregeln genutzt werden.

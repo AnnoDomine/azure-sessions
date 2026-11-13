@@ -7,7 +7,7 @@ Themenschwerpunkt dieser Session ist das **Kubernetes Goat** Security Lab von Ma
 
 ---
 
-## Übersicht der Dateien & Skripte
+## Übersicht der Dateien
 
 | Datei / Ordner | Beschreibung |
 | --- | --- |

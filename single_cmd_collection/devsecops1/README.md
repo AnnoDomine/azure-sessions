@@ -4,7 +4,7 @@ Themenschwerpunkte dieser Session sind die **DevSecOps- und Shift-Left-Architekt
 
 ---
 
-## Übersicht der Skripte
+## Übersicht der Dateien
 
 | Datei | Beschreibung |
 | --- | --- |
@@ -13,7 +13,7 @@ Themenschwerpunkte dieser Session sind die **DevSecOps- und Shift-Left-Architekt
 
 ---
 
-## Technische Insights & Konzepte
+## Workflow & Erläuterungen
 
 ### 1. Warum Build-Pipelines das primäre Angriffsziel sind (SolarWinds 2020)
 - **Angriffspfad**: Statt tausende Produktionssysteme einzeln anzugreifen, kompromittierte APT29 den Build-Server. Der Schadcode wurde während der Kompilierung injiziert und mit dem offiziellen Code-Signing-Zertifikat signiert (~18.000 betroffene Organisationen).
