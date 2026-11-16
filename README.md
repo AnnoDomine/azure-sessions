@@ -32,6 +32,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **DevSecOps 11** | Kubernetes on Azure (AKS, ACR Integration, Load Balancing & StatefulSets) | [`single_cmd_collection/devsecops11/`](./single_cmd_collection/devsecops11/) |
 | **DevSecOps 12** | Kubernetes Security (Attack Chain, RBAC Hardening, Node Escape & Kubescape) | [`single_cmd_collection/devsecops12/`](./single_cmd_collection/devsecops12/) |
 | **DevSecOps 13** | Kubernetes Goat (Helm, Minikube & 22 Security-Szenarien) | [`single_cmd_collection/devsecops13/`](./single_cmd_collection/devsecops13/) ([Solutions](./single_cmd_collection/devsecops13/solutions/README.md)) |
+| **DevSecOps 14** | Modern Application Deployments (Azure Functions, Managed Identity & Key Vault Leak) | [`single_cmd_collection/devsecops14/`](./single_cmd_collection/devsecops14/) |
 
 ---
 
@@ -66,7 +67,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── devsecops10/           # Einzelbefehle für DevSecOps 10
     ├── devsecops11/           # Einzelbefehle für DevSecOps 11
     ├── devsecops12/           # Einzelbefehle für DevSecOps 12
-    └── devsecops13/           # Einzelbefehle, Cheat Sheet & Solutions für DevSecOps 13
+    ├── devsecops13/           # Einzelbefehle, Cheat Sheet & Solutions für DevSecOps 13
+    └── devsecops14/           # Einzelbefehle & Security-Doku für DevSecOps 14
 ```
 
 ---
@@ -241,6 +243,13 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Secrets & Supply Chain**: Auslesen exponierter `.git`-Repositories (`git-dumper`, `TruffleHog`), offener Private Container Registries (`/v2/_catalog`), versteckter Docker-Image-Layer (`docker history`, `dfimage`, `layer.tar`) sowie geleakter `ENV`-Variablen
 - **Container Escape & Netzwerk**: Exploitation gemounteter `containerd.sock`-Sockets (`crictl`), privilegierter `hostPath`-Mounts (`chroot`), SSRF auf interne Dienste (`metadata-db`), offener `NodePort`s sowie Namespace-Bypassing (`zmap`, `redis-cli`) und Isolation via `NetworkPolicy`
 - **RBAC, Auditing & Runtime Defense**: Analyse überprivilegierter ServiceAccounts, CIS Benchmarks (`docker-bench-security`, `kube-bench`), Cluster-Auditing (`kubeaudit`, `popeye`), eBPF/Kernel-Runtime-Monitoring (`Falco`, `Cilium Tetragon`) und Policy Enforcement (`Kyverno`)
+
+### DevSecOps 14 – Modern Application Deployments (Azure Functions & Key Vault Secret Leak)
+
+- **Serverless Function Deployment**: Bereitstellung von Python-3.11-Functions (Runtime v4) im Consumption Plan (`az functionapp create`), Konfiguration von Python v2 Worker Indexing (`EnableWorkerIndexing`) und Remote-Build sowie Zip-Deployment (`az functionapp deployment source config-zip`)
+- **Cross-Platform Dependency Vendoring**: Lokales Packaging binärer Python-Abhängigkeiten für Linux-Hosts (`pip3 install --platform manylinux2014_x86_64 --only-binary=:all:`) in `.python_packages/lib/site-packages`
+- **RBAC & Managed Identity für Serverless**: Absicherung des Azure Key Vaults über Entra ID RBAC (`--enable-rbac-authorization true`), `Key Vault Secrets Officer` für Admins und Least-Privilege `Key Vault Secrets User` für die System-Assigned Managed Identity der Function App
+- **Identity Token Exfiltration via RCE**: Ausnutzung einer OS Command Injection (`/api/lookup?host=127.0.0.1;...`) zum Diebstahl des Entra-ID-Access-Tokens über den App-Service-spezifischen Endpunkt (`IDENTITY_ENDPOINT` & `X-IDENTITY-HEADER` statt VM-IMDS) und direkter Secret-Abruf über die Key Vault REST API (`api-version=7.4`)
 
 ---
 
