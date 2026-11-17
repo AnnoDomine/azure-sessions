@@ -33,6 +33,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **DevSecOps 12** | Kubernetes Security (Attack Chain, RBAC Hardening, Node Escape & Kubescape) | [`single_cmd_collection/devsecops12/`](./single_cmd_collection/devsecops12/) |
 | **DevSecOps 13** | Kubernetes Goat (Helm, Minikube & 22 Security-Szenarien) | [`single_cmd_collection/devsecops13/`](./single_cmd_collection/devsecops13/) ([Solutions](./single_cmd_collection/devsecops13/solutions/README.md)) |
 | **DevSecOps 14** | Modern Application Deployments (Azure Functions, Managed Identity & Key Vault Leak) | [`single_cmd_collection/devsecops14/`](./single_cmd_collection/devsecops14/) |
+| **DevSecOps 15** | AI in Azure (Azure AI Foundry, Entra ID RBAC, Python SDK & Embeddings RAG) | [`single_cmd_collection/devsecops15/`](./single_cmd_collection/devsecops15/) |
 
 ---
 
@@ -68,7 +69,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── devsecops11/           # Einzelbefehle für DevSecOps 11
     ├── devsecops12/           # Einzelbefehle für DevSecOps 12
     ├── devsecops13/           # Einzelbefehle, Cheat Sheet & Solutions für DevSecOps 13
-    └── devsecops14/           # Einzelbefehle & Security-Doku für DevSecOps 14
+    ├── devsecops14/           # Einzelbefehle & Security-Doku für DevSecOps 14
+    └── devsecops15/           # Einzelbefehle & RAG/RBAC-Doku für DevSecOps 15
 ```
 
 ---
@@ -250,6 +252,13 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Cross-Platform Dependency Vendoring**: Lokales Packaging binärer Python-Abhängigkeiten für Linux-Hosts (`pip3 install --platform manylinux2014_x86_64 --only-binary=:all:`) in `.python_packages/lib/site-packages`
 - **RBAC & Managed Identity für Serverless**: Absicherung des Azure Key Vaults über Entra ID RBAC (`--enable-rbac-authorization true`), `Key Vault Secrets Officer` für Admins und Least-Privilege `Key Vault Secrets User` für die System-Assigned Managed Identity der Function App
 - **Identity Token Exfiltration via RCE**: Ausnutzung einer OS Command Injection (`/api/lookup?host=127.0.0.1;...`) zum Diebstahl des Entra-ID-Access-Tokens über den App-Service-spezifischen Endpunkt (`IDENTITY_ENDPOINT` & `X-IDENTITY-HEADER` statt VM-IMDS) und direkter Secret-Abruf über die Key Vault REST API (`api-version=7.4`)
+
+### DevSecOps 15 – AI in Azure (Azure AI Foundry, Entra ID RBAC & RAG)
+
+- **Azure AI Foundry & Project Setup**: Registrierung von `Microsoft.CognitiveServices` und Bereitstellung eines `AIServices`-Accounts mit `--custom-domain`, System-Assigned Managed Identity (`--assign-identity`) sowie zugehörigem AI-Foundry-Projekt (`az cognitiveservices account project create`)
+- **Modell-Deployments**: Prüfung regionaler Modellverfügbarkeiten (`az cognitiveservices model list`) und Deployment von `gpt-5-mini` (`DataZoneStandard`) sowie `text-embedding-3-small` (`GlobalStandard`)
+- **Keyless Auth via Entra ID RBAC**: Zuweisung der Rolle `Foundry User` auf Account-Ebene an den angemeldeten Benutzer und die Project Managed Identity ohne statische API-Keys
+- **Python SDK & RAG-Prototyp**: Lokale `venv`-Umgebung mit `azure-ai-projects`, `azure-identity` (`DefaultAzureCredential`, `AzureCliCredential` mit `https://ai.azure.com/.default`), `openai` und `numpy` für Vektor-Embeddings, Cosine-Similarity-Suche und kontextgebundene Antworten (`ask_ai.py`, `embeddings.py`)
 
 ---
 
