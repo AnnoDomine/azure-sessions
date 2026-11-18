@@ -34,6 +34,7 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 | **DevSecOps 13** | Kubernetes Goat (Helm, Minikube & 22 Security-Szenarien) | [`single_cmd_collection/devsecops13/`](./single_cmd_collection/devsecops13/) ([Solutions](./single_cmd_collection/devsecops13/solutions/README.md)) |
 | **DevSecOps 14** | Modern Application Deployments (Azure Functions, Managed Identity & Key Vault Leak) | [`single_cmd_collection/devsecops14/`](./single_cmd_collection/devsecops14/) |
 | **DevSecOps 15** | AI in Azure (Azure AI Foundry, Entra ID RBAC, Python SDK & Embeddings RAG) | [`single_cmd_collection/devsecops15/`](./single_cmd_collection/devsecops15/) |
+| **DevSecOps 16** | AI Security on Azure (Prompt Injection, Foundry Agents, RBAC & Guardrails) | [`single_cmd_collection/devsecops16/`](./single_cmd_collection/devsecops16/) |
 
 ---
 
@@ -70,7 +71,8 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
     ├── devsecops12/           # Einzelbefehle für DevSecOps 12
     ├── devsecops13/           # Einzelbefehle, Cheat Sheet & Solutions für DevSecOps 13
     ├── devsecops14/           # Einzelbefehle & Security-Doku für DevSecOps 14
-    └── devsecops15/           # Einzelbefehle & RAG/RBAC-Doku für DevSecOps 15
+    ├── devsecops15/           # Einzelbefehle & RAG/RBAC-Doku für DevSecOps 15
+    └── devsecops16/           # Einzelbefehle & AI-Security-Doku für DevSecOps 16
 ```
 
 ---
@@ -259,6 +261,13 @@ Jede Session enthält modulare Einzelbefehle inklusive ausführlicher Erklärung
 - **Modell-Deployments**: Prüfung regionaler Modellverfügbarkeiten (`az cognitiveservices model list`) und Deployment von `gpt-5-mini` (`DataZoneStandard`) sowie `text-embedding-3-small` (`GlobalStandard`)
 - **Keyless Auth via Entra ID RBAC**: Zuweisung der Rolle `Foundry User` auf Account-Ebene an den angemeldeten Benutzer und die Project Managed Identity ohne statische API-Keys
 - **Python SDK & RAG-Prototyp**: Lokale `venv`-Umgebung mit `azure-ai-projects`, `azure-identity` (`DefaultAzureCredential`, `AzureCliCredential` mit `https://ai.azure.com/.default`), `openai` und `numpy` für Vektor-Embeddings, Cosine-Similarity-Suche und kontextgebundene Antworten (`ask_ai.py`, `embeddings.py`)
+
+### DevSecOps 16 – AI Security on Azure (Prompt Injection, Foundry Agents & Guardrails)
+
+- **Direct Prompt Injection & Defense-in-Depth**: Vergleich zweier Angriffsvektoren aus `CyberstepsDE/ai-security-demos` – naiver Override (`01-demo1-attempt-a.sh`, blockiert durch den Azure-Jailbreak-Filter `content_filter`) vs. Role-Play-Bypass (`02-demo1-attempt-b.sh`, abgelehnt durch das eigene Model Alignment)
+- **Indirect Prompt Injection im RAG-Kontext**: Aufbau eines realen Foundry Agents (`03-demo2-real-agent.py` via `azure-ai-agents` & `DefaultAzureCredential`) mit Vector Store und File Search auf `vacation-policy.txt` sowie Zuweisung der Entra-ID-RBAC-Rollen (`Azure AI Developer`, `Cognitive Services OpenAI Contributor`, `Foundry User`)
+- **Detected ≠ Blocked (`Annotate-Only`)**: Nachweis der Konfigurationslücke bei benutzerdefinierten Content-Policies mit deaktivierter Blockierung (`x-policy-id`, `"detected": true, "filtered": false`)
+- **Explizite Guardrails im Foundry Portal**: Konfiguration der Risiken `User prompt attack` (`user input`) und `Document attack` (`user input` + `tool response` für File Search/RAG) mit Action `Annotate and block` sowie Zuweisung direkt auf Agent-Ebene
 
 ---
 

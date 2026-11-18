@@ -34,3 +34,4 @@ Zur initialen Prüfung und Installation aller benötigten CLI-Werkzeuge steht im
 | [`DevSecOps 13`](./devsecops13/README.md) | DevSecOps 13 - Kubernetes Goat (Helm, Minikube, Cheat Sheet & [22 Solutions](./devsecops13/solutions/README.md)) |
 | [`DevSecOps 14`](./devsecops14/README.md) | DevSecOps 14 - Modern Application Deployments (Azure Functions, Managed Identity & Key Vault Secret Leak) |
 | [`DevSecOps 15`](./devsecops15/README.md) | DevSecOps 15 - AI in Azure (Azure AI Foundry, Entra ID RBAC, Python SDK & Embeddings RAG) |
+| [`DevSecOps 16`](./devsecops16/README.md) | DevSecOps 16 - AI Security on Azure (Prompt Injection, Foundry Agents, RBAC & Guardrails) |
