@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# 3. SPEICHERKONTO ANZEIGEN
+# 5. ALLE RESSOURCEN IN DER RESSOURCENGRUPPE AUFLISTEN
 # ==============================================================================
-# Zeigt die Eigenschaften und Konfiguration des erstellten Storage Accounts
-# übersichtlich im Tabellenformat an.
+# Listet sämtliche Ressourcen innerhalb der Resource Group tabellarisch auf.
 
-az storage account show \
-  --name "$STORAGE" \
+az resource list \
   --resource-group "$RG" \
   --output table
