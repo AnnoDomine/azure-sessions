@@ -8,12 +8,13 @@ Themenschwerpunkte dieser Session sind die **Cloud-Architekturmodelle (CapEx vs.
 
 | Datei | Beschreibung |
 | --- | --- |
-| [`00_env_variables.sh`](./00_env_variables.sh) | Zentrale Variablen (`RG`, `LOCATION`, `STORAGE` mit `$RANDOM`-Suffix) |
+| [`00_env_variables.sh`](./00_env_variables.sh) | Zentrale Variablen (`RG`, `LOCATION`, `STORAGE` mit `$RANDOM`-Suffix, `VM-Parameter`) |
 | [`01_create_resource_group.sh`](./01_create_resource_group.sh) | Erstellen der Resource Group via `az group create` |
 | [`02_create_storage_account.sh`](./02_create_storage_account.sh) | Bereitstellen eines Storage Accounts (`Standard_LRS`) |
-| [`03_show_storage_account.sh`](./03_show_storage_account.sh) | Inspektion der Storage-Konfiguration (`az storage account show -o table`) |
-| [`04_list_resources.sh`](./04_list_resources.sh) | Inventarisierung aller Ressourcen in der Resource Group (`az resource list`) |
-| [`05_cleanup_resource_group.sh`](./05_cleanup_resource_group.sh) | Rückstandsfreies Löschen der Resource Group (`az group delete --yes --no-wait`) |
+| [`03_create_vm.sh`](./03_create_vm.sh) | Erstellen der VM in der Resource Group (`az vm create`) |
+| [`04_show_storage_account.sh`](./04_show_storage_account.sh) | Inspektion der Storage-Konfiguration (`az storage account show -o table`) |
+| [`05_list_resources.sh`](./05_list_resources.sh) | Inventarisierung aller Ressourcen in der Resource Group (`az resource list`) |
+| [`06_cleanup_resource_group.sh`](./06_cleanup_resource_group.sh) | Rückstandsfreies Löschen der Resource Group (`az group delete --yes --no-wait`) |
 
 ---
 
